@@ -1,0 +1,18 @@
+.best {
+    color: white;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.form-box {
+    background-color: #BEBEBE;
+    margin-top: -290px;
+    margin-left: 900px;
+    height: 500px;
+    width: 500px;
+}
+
+.login {
+    padding-top: 50px;
+    margin-left: 50px;
+}
