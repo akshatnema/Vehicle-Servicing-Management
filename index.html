@@ -1,27 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-     <style>
-         body{
-      background-image: url("./images/bg.jpeg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color:black}
-     </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <title>iCars</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <section class="section-1">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">iCars</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,7 +37,14 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Services
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,59 +57,77 @@
                 <a class="nav-link" href="#">Pricing</a>
               </li>
             </ul>
-            <form class="d-flex">
-              
-              <button class="btn btn-outline-warning" type="submit">Get An Appointment</button>
-            </form>
+            <button class="btn btn-outline-warning" type="submit">
+              Get An Appointment
+            </button>
           </div>
         </div>
       </nav>
 
-    <div class="best">
-        <h1 style="font-size: 70px;"> The Best Car</h1>
-        <h1 style="font-size: 70px;">Services</h1>
-        <div>
-        <p>Lorem Ipsum has been the industry's </p>
-        <p>standard dummy text ever since the 1500s galley of type </p>
-        </div>
-    </div>
-
-    <div class="form-box">
-        <div class="mb-3">
-            <div class="login">
+      <div class="container home">
+        <div class="row">
+          <div class="col left col-md-6">
+            <div class="best">
+              <h1 style="font-size: 4rem">The Best Car</h1>
+              <h1 style="font-size: 4rem">Services</h1>
+              <div>
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s galley of type
+              </div>
+            </div>
+          </div>
+          <div class="col right col-md-6">
             <form>
-                <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label" style="color: black;">Email address</label>
-            <input type="email" class="form-control" style="width: 300px;"id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text" style="color: red;">We'll never share your email with anyone else.</div>
+              <div class="mb-3">
+                <div class="Sign-in">Sign in</div>
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="form-text" style="color: white">
+                  We'll never share your email with anyone else.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Remember me</label>
+                  
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <hr style="height:2px;border-width:0;color:white;background-color:white"/>
+            <div class="text-center">Don't have an account. <a href="#" class="link-light">Sign Up now!</a></div>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label" style="color: black;">Password</label>
-            <input type="password" class="form-control" style="width: 300px;" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1" style="color: black;">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-warning">login</button>
-        </form>
-        <hr style="margin-right:70px ;">
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Sign Up</button>
-          </div>
-        
-    </div>
-
+      </div>
+    </section>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
