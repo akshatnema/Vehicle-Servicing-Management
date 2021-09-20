@@ -5,7 +5,7 @@ var port = 8000;
 var app = express();
 
 app.set('views', path.resolve(__dirname, '../web/views'));
-app.use(express.static(__dirname + '../public'));
+app.use(express.static('../web/public'));
 app.use(expressLayout);
 app.set('view engine', 'ejs');
 
