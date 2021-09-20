@@ -4,7 +4,8 @@ var expressLayout = require('express-ejs-layouts');
 var port = 8000;
 var app = express();
 
-app.set('views', path.join(__dirname, '../web/views'));
+app.set('views', path.resolve(__dirname, '../web/views'));
+app.use(express.static(__dirname + '../public'));
 app.use(expressLayout);
 app.set('view engine', 'ejs');
 
