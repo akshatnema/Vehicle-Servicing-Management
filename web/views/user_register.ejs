@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/login-register.css" />
 </head>
 <body class="UR-body">
-
+    <%- include ("./components/navbar1") %> 
     <div class="container" style="display: flex;">
         <div class="col left col-md-6 home">
             <div class="best ">
@@ -48,7 +48,7 @@
                 <input name="text" type="password" name="password" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary signupBtn">Sign-Up</button>
-            <div class="refer_back">Already have an account! <a href="index.ejs">Login</a> instead</div>
+            <div class="refer_back">Already have an account! <a href=<%- ("../") %>>Login</a> instead</div>
         </form>
    
     </div>
