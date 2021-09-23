@@ -21,6 +21,44 @@
         <h1 class="heading">
             Appointment Form
         </h1>
+    <center>  
+        <div class="form">
+            
+        <form class="UR-form">
+           
+            <div class="mb-3 form-components">
+               <select class="form-select" name="vehicle" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                <option value="1">Four Wheeler</option>
+                <option value="2">Two Wheeler</option>
+              </select>
+            </div>
+             <div class="mb-3 urf-named">
+                <input name="number-plate" type="text" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Vehicle Number">
+             </div>
+              
+            <div class="mb-3 urf-named">
+                <input name="model" type="text" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Model">
+            </div>
+
+            <div class="mb-3 urf-named">
+                <select class="form-select" name="vehicle" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                    <option selected>Servicing Type</option>
+                    <option value="1">Immediate</option>
+                    <option value="2">Low-Cost</option>
+                  </select>
+            </div>
+              
+
+            
+            <div class="mb-3 urf-named"> 
+                <textarea class="form-control urf-namei urf-address" aria-label="address" placeholder="Other details want to mention"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary signupBtn">Sign-Up</button>
+            <div class="refer_back">Already have an account! <a href=<%- ("../") %>>Login</a> instead</div>
+        </form>
+   
+        </div>
+    </center> 
         
        
 

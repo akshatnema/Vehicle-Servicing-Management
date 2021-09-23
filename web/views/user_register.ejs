@@ -9,7 +9,7 @@
 </head>
 <body class="UR-body">
     <%- include ("./components/navbar1") %> 
-    <div class="container" style="display: flex;">
+      <div class="container" style="display:flex;">
         <div class="col left col-md-6 home">
             <div class="best ">
               <h1 style="font-size: 4rem">The Best Car</h1>
@@ -19,7 +19,7 @@
               </div>
             </div>
          </div>
-         
+         <div class="form_only">
         <form class="UR-form">
             <h1 style="text-align: center;" class="UR-head">Registeration Form</h1>
             <hr>
@@ -47,13 +47,19 @@
             <div class="mb-3 urf-named">
                 <input name="text" type="password" name="password" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary signupBtn">Sign-Up</button>
+            <button type="submit" class="btn btn-primary signupBtn" id='signupBtn'>Sign-Up</button>
             <div class="refer_back">Already have an account! <a href=<%- ("../") %>>Login</a> instead</div>
         </form>
+       </div>
    
     </div>
     
 </body>
+<script>
+    document.getElementById('signupBtn').addEventListener('click',()=>{
+          window.location.href="../";
+    })
+</script>
  <!-- Option 1: Bootstrap Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </html>
