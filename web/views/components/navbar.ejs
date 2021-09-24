@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">iCars</a>
+      <a class="navbar-brand" href=<%- ("./dashboard") %>>iCars services</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -38,9 +38,16 @@
             <a class="nav-link" href="#">Pricing</a>
           </li>
         </ul>
-        <button class="btn btn-outline-warning" type="submit">
-          Get An Appointment
-        </button>
+        <a class="btn btn-danger" id="logoutBtn" href="./">
+          Log Out
+        </a>
       </div>
     </div>
   </nav>
+  <script>
+    let logout=document.getElementById('logoutBtn');
+    logout.addEventListener('click',()=>{
+      localStorage.clear();
+      sessionStorage.clear();
+    })
+  </script>

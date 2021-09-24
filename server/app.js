@@ -34,6 +34,12 @@ app.get('/user_register',function(req, res){
 app.get('/dashboard',function(req, res){
   res.render('dashboard');
 })
+app.get('/admin-login',function(req, res){
+  res.render('admin-login');
+})
+app.get('/take-appointment',function(req, res){
+  res.render('take-appointment');
+})
 
 app.listen(port,function(){
     console.log("Server listening on http://localhost:8000");
