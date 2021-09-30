@@ -53,9 +53,11 @@ body{
     border-radius: 2rem;
 }
 .adminBtn{
-    font-size: 2rem;
-    margin-left: 7rem;
-    height: 4rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    /* margin-left: 7rem; */
+    padding:0.5rem;
+    height: fit-content;
     background-color: rgb(138, 43, 226,0.1);
 }
 .UR-body{
@@ -94,6 +96,7 @@ body{
 .refer_back{
     color: rgb(248, 246, 246);
     margin-left:3.3rem;
+    margin-top: 1rem;
 
 }
 .admin-form{

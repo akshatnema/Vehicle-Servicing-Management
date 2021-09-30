@@ -10,7 +10,7 @@
         <title>iCars</title>
   </head>
   <body class="login-body">
-   <%- include ("./components/navbar1") %>  
+   <%- include ("./components/navbar") %>  
     <div class="container home">
       <div class="row">
         <div class="col left col-md-6">
@@ -26,7 +26,7 @@
         <div class="col right col-md-6">
           <form class="login-form">
             <div class="mb-3">
-              <div class="adminPanelBtn" style="display: flex;">
+              <div class="adminPanelBtn justify-content-between" style="display: flex;">
                  <div class="Sign-in">Sign in</div>
                  <a class="btn btn-primary adminBtn" href=<%- ("./admin-login") %> >Admin</a>
               </div>
