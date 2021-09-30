@@ -15,6 +15,8 @@ var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT AUTO_INCREMENT PRI
 
 var job_card_details="CREATE TABLE IF NOT EXISTS job_card_details(srno INT AUTO_INCREMENT PRIMARY KEY,card_id INT NOT NULL,job_id INT NOT NULL,price INT,Assign_dt DATE NOT NULL,Complete_dt DATE NOT NULL,Status BOOLEAN NOT NULL,Employee_id INT)"
 
+var job="CREATE TABLE IF NOT EXISTS job(job_id INT AUTO_INCREMENT PRIMARY KEY,job_name VARCHAR(50) NOT NULL,price INT NOT NULL)"
+
 con.query(customer, function (err) {
   if (err) throw err;
   console.log(" Customer Table created");
@@ -24,7 +26,13 @@ con.query(job_card, function (err) {
   if (err) throw err;
   console.log("Job Card Table created");
 });
+
 con.query(job_card_details, function (err) {
   if (err) throw err;
   console.log("Job Card Details Table created");
+});
+
+con.query(job, function (err) {
+  if (err) throw err;
+  console.log("Job Table created");
 });
