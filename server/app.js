@@ -40,6 +40,9 @@ app.get('/admin-login',function(req, res){
 app.get('/take-appointment',function(req, res){
   res.render('take-appointment');
 })
+app.get('/book-vehicle',function(req, res){
+  res.render('book-vehicle');
+})
 
 app.listen(port,function(){
     console.log("Server listening on http://localhost:8000");

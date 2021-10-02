@@ -1,20 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+
 .db-body{
-    background-image: url(../images/planegreen.jpg);
+    /* background-image: linear-gradient(blue,pink); */
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    /* background-image: linear-gradient(15deg,white 0%,rgb(12, 12, 12) 100%); */
+    
+    /* background-color: rgb(196, 218, 238); */
+    background-repeat: no-repeat;
     background-size: 100rem;
-    color:black;
+    color:rgb(243, 239, 239);
 }
-.paana1{
-    font-size: 10rem;
-    color: blue;
+.sections{
+    display: inline-flex;
+}
+.section1{
+    width: 45%;
+    height: auto;
+    /* background-image: linear-gradient(rgb(235, 231, 231),white); */
+}
+.section2{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin-left: 13rem;
 }
 .wlcome{
     font-family:'Source Code Pro', monospace;
     font-size: 7rem;
+    color: white;
     position:center;
-    margin:3rem 0 0 22rem ;
+    margin:10.5rem 0 0 3rem ;
 }
 .wlcm-hand{
     width: 3rem;
     height: 3rem;
 }
+.buttons{
+    color: rgb(233, 27, 27);
+    font-family: cursive;
+    margin:5rem 0 2.5rem 2rem;
+    padding: 3rem;
+}
+.vehicleBtn{
+    background-color: #a81fe7;
+    padding: 1rem;
+    margin-left: 2rem;
+}
+.appointmentBtn{
+    background-color: #cf1f1f;
+    padding: 1rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+.user_image_d{
+    margin:2rem;
+}
+.user-image{
+  border-radius: 50%;
+}
+.user-image:hover{
+    height:105%;
+    width: 105%;
+    border: 0.2rem solid rgb(219, 22, 22);
+}
+.name_of_user{
+    font-size: 3rem;
+    margin:0.5rem 0 0 0;
+    font-family:cursive;
+    font-weight: bold;
+    color: rgb(241, 50, 98);
+}
+.phone-call-img{
+    height: 2rem;
+    width: 2rem;
+    margin: 2rem 1rem 0 1rem;
+}
+
+.phone-number{
+    font-size: 2rem;
+    /* color: rgb(15, 15, 15); */
+    font-family: cursive;
+    font-weight: bold;
+    margin: 1.2rem 0 0 0;
+}
+
