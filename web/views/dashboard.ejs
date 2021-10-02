@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <title>Welcome to iCars services</title>
-  </head>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%- include ("./components/navbar.ejs") %>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <title>Welcome to iCars services</title>
+</head>
+
+<%- include ("./components/navbar.ejs") %>
 
   <body class="db-body">
-    
+
     <div class="sections">
       <section class="section1">
         <h1 class="wlcome">
@@ -24,54 +26,63 @@
 
         <div class="buttons">
           <a type="button" href=<%- ("../book-vehicle") %> class="btn btn-primary vehicleBtn"> Book your Vehicle</a>
-          <a type="button" href=<%- ("../take-appointment") %> class="btn btn-secondary appointmentBtn">Take an Appointment</a>
+          <a type="button" href=<%- ("../take-appointment") %> class="btn btn-danger appointmentBtn">Take an
+            Appointment</a>
         </div>
       </section>
-  
+
       <section class="section2">
-             
-       
-          <div class="user_image_d">
-            <img class="user-image" src="./images/dashboard/user.png">
-            </div>
-         
-          
-         
-          <div class="name_of_user">
-            Paras Gami 
-          </div>
-         
-  
-         
-           <div class="phone-details" style="display: flex;">
-            <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US"> <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt=""> </a>
-            <div class="phone-number">98005080809</div>
-           </div>
-         
-  
-         
-            <div class="phone-details emails" style="display: flex;">
-             <a target="__blank" href="https://gmail.com"> <img src="./images/dashboard/email.png" class="phone-call-img" alt=""> </a>
-             <div class="phone-number ">parasgami3@gmail.com</div>
-            </div>
-           
-          
-            <div  class="address phone-details" address style="display: flex;">
-             <a target="__blank" href="https://www.google.com/maps"> <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a>
-             <div class="phone-number ">403 street, city, state</div>
-            </div>
-             
+
+
+        <div class="user_image_d">
+          <img class="user-image" src="./images/dashboard/user.png">
+        </div>
+
+
+
+        <div class="name_of_user">
+          Paras Gami
+        </div>
+
+
+
+        <div class="phone-details" style="display: flex;">
+          <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US">
+            <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
+            <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
+          </a>
+          <div class="phone-number">98005080809</div>
+        </div>
+
+
+
+        <div class="phone-details emails" style="display: flex;">
+          <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
+          <div class="phone-number">parasgami3@gmail.com</div>
+        </div>
+
+
+        <div class="address phone-details" address style="display: flex;">
+          <a target="__blank" href="https://www.google.com/maps"> 
+            <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
+            <i class="fas fa-home fa-2x phone-call-img"></i> </a>
+          <div class="phone-number">403 street, city, state</div>
+        </div>
+
       </section>
-      </div>
-    
+    </div>
 
 
-  
-    
-    
-</body>
-<script >
 
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+
+  </body>
+  <script>
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
 </html>
