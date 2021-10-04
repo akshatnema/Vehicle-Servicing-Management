@@ -43,7 +43,9 @@ app.get('/take-appointment',function(req, res){
 app.get('/book-vehicle',function(req, res){
   res.render('book-vehicle');
 })
-
+app.get('/feedBack',function(req, res){
+  res.render('feedBack');
+})
 app.listen(port,function(){
     console.log("Server listening on http://localhost:8000");
 })
