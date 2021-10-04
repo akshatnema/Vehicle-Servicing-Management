@@ -108,13 +108,16 @@
 }
 .date_of_appointment{
   margin-bottom: 1rem;
-  width:30rem;
 }
 .dates{
-  width:30.3rem;
+  width:31rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 0.1rem;
-  padding: 0.15rem;
+  border-radius: 0.5rem;
+  padding:1rem;
   border: none;
   height: 2rem;
+}
+
+.urf-address{
+  height: 10rem;
 }
