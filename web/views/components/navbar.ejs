@@ -1,7 +1,6 @@
-<link rel="stylesheet/less" type="text/css" href="./css/navbar.scss"> 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href=<%- ("./dashboard") %>> iCars</a>
+      <a class="navbar-brand" href=<%- ("./dashboard") %> style="font-size:1.7rem"> iCars</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -15,26 +14,34 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+          <li class="nav-item" style="padding-left: 1rem;padding-right: 1rem;">
+            <a class="nav-link" aria-current="page" href="#" style="color:white;">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="padding-left: 1rem;padding-right: 1rem;">
             <a
               class="nav-link"
               href="#"
               aria-expanded="false"
+              style="color:white"
             >
               Services
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+         
+          <li class="nav-item" style="padding-left: 1rem;padding-right: 1rem;">
+            <a class="nav-link" href="#" style="color:white">Pricing</a>
+          </li>
+          <li class="nav-item" style="padding-left: 1rem;padding-right: 1rem;">
+            <a class="nav-link" href="#" style="color:white">Profile</a>
+          </li>
+          <li class="nav-item" style="padding-left: 1rem;padding-right: 1rem;">
+            <a class="nav-link" href="#" style="color:white">About Us</a>
           </li>
         </ul>
-        <a class="btn btn-outline-primary" style="margin-right: 20px;">
+        <a class="btn btn-outline-primary" style="margin-right: 20px;" href=<%- ("../take-appointment") %>>
           Get Appointment
         </a>
-        <a class="btn btn-danger" id="logoutBtn" href="./">
+        <a class="btn btn-danger" id="logoutBtn" href="">
           Log Out
         </a>
       </div>
