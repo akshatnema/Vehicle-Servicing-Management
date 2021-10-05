@@ -41,7 +41,7 @@ app.get('/take-appointment',function(req, res){
   res.render('take-appointment');
 })
 app.get('/book-vehicle',function(req, res){
-  res.render('book-vehicle');
+  res.render('registerVehicle');
 })
 app.get('/feedback',function(req, res){
   res.render('feedBack');
