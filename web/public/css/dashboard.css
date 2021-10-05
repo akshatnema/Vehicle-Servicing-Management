@@ -48,11 +48,16 @@
     padding: 1rem;
 }
 
-.vehicleBtn:hover, .appointmentBtn:hover{
+.vehicleBtn:hover, .appointmentBtn:hover, .feedbackBtn:hover{
     transform: scale(1.02);
 }
 
 .appointmentBtn{
+    padding: 1rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+.feedbackBtn{
     padding: 1rem;
     margin-left: 2rem;
     font-size: 1rem;
