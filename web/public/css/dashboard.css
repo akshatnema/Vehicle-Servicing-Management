@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 .db-body{
     /* background-image: linear-gradient(blue,pink); */
@@ -8,10 +8,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     color:rgb(243, 239, 239);
+    font-family: 'Montserrat' !important;
 }
 .sections{
     display:flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .section1{
     width: 45%;
@@ -29,19 +30,16 @@
 }
 
 .wlcome{
-    font-family:'Source Code Pro', monospace;
     font-size: 7rem;
     color: white;
     position:center;
-    margin:7rem 0 0 0rem ;
+    margin:7rem 1rem 0 0rem ;
 }
 .wlcm-hand{
     width: 3rem;
     height: 3rem;
 }
 .buttons{
-    color: rgb(233, 27, 27);
-    font-family: cursive;
     margin:5rem 0 2.5rem 0rem;
 }
 .vehicleBtn{
@@ -73,9 +71,7 @@
 .name_of_user{
     font-size: 3rem;
     margin:0.5rem 0 0 0;
-    font-family:cursive;
     font-weight: bold;
-    color: rgb(241, 50, 98);
 }
 .phone-call-img{
     height: 2rem;
@@ -87,7 +83,6 @@
 .phone-number{
     font-size: 2rem;
     /* color: rgb(15, 15, 15); */
-    font-family: cursive;
     font-weight: bold;
     margin: 1.2rem 0 0 0;
 }

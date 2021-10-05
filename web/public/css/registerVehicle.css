@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 .db-body{
-    background-image: url(../images/planeblack.jpg);
-    background-size: 100rem;
-    color:black;
+   background-color: black;
+    background-size: cover;
+    color: white;
+    font-family: 'Montserrat' !important;
 }
 .heading{
-    margin: 3rem 0 0 27.5rem;
-    font-family: 'Stick No Bills', sans-serif;
+    margin: 3rem 0 0 0;
+    text-align:center;
     font-size: 6rem;
 }
 .UR-form{
