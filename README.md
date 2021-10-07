@@ -8,7 +8,7 @@
    ![GitHub Repo stars](https://img.shields.io/github/stars/AKSHATNEMA/Vehicle-Servicing-Management?color=%2381f200&logo=github&style=for-the-badge)
    ![GitHub forks](https://img.shields.io/github/forks/AKSHATNEMA/Vehicle-Servicing-Management?color=%2300c8ff&logo=github&style=for-the-badge)
    ![GitHub issues](https://img.shields.io/github/issues/AKSHATNEMA/Vehicle-Servicing-Management?color=%23f6ff00&logo=github&style=for-the-badge)
-   ![Telegram](https://img.shields.io/badge/-TELEGRAM-%2300d5ff?style=for-the-badge&logo=TELEGRAM&color=39c3ed&url=https://t.me/joinchat/YaYtDpKRN6A2Njg1)
+   [![Telegram](https://img.shields.io/badge/-TELEGRAM-%2300d5ff?style=for-the-badge&logo=TELEGRAM&color=39c3ed&url=https://t.me/joinchat/YaYtDpKRN6A2Njg1)](https://t.me/joinchat/YaYtDpKRN6A2Njg1)
 
 </p>
 
@@ -30,19 +30,29 @@ In this software, anyone with a legal email ID can be added to the system as a c
 
 Here are the steps you need to do:
 
-1. Fork this repo in your profile.
-2. Clone the forked repository in your system, by using this command in your Git bash/Command Prompt
+1. **Fork** this repo in your profile.
+2. **Clone the forked repository** in your system, by using this command in your Git bash/Command Prompt. <br />
+   Make sure you replace `<your-username>` with your Github username
 
-   `git clone https://github.com/<your-username>/Vehicle-Servicing-Management.git`
+   ```
+   git clone https://github.com/<your-username>/Vehicle-Servicing-Management.git
+   ```
   
-3. Make a seperate branch, other than main, to make changes in this project.
+3. Make a seperate **branch**, other than main, to make changes in this project.
+   ```
+   git branch <branch-name>
+   ```
 4. Start the XAMPP (Apache and MYSQL) server in your system and make a blank Database named `vsm`, using XAMPP.
-5. In the project directory, go to `server` folder and run the following command in terminal: <br /><br />
-   `npm install` <br /> <br />
-   After all the node modules gets downloaded, run: <br /> <br />
-   `npm start`
+5. In the project directory, go to `server` folder and run the following command in terminal: 
+   ```
+   npm install
+   ``` 
+   After all the node modules gets downloaded, run:
+   ```
+   npm start
+   ```
 6. This will start the project in `localhost` server at port `8000`. Write `localhost:8000` in your browser to see the UI of the project.
-7. Hurrey!! 🥳 🎉, You can contribute to our project. Good Luck 👍    
+7. Hurray!! 🥳 🎉, You are ready to contribute to our project. **Good Luck**👍    
 
 ## Telegram Link
 Want to talk to us? Join our Telegram group [using this link](https://t.me/joinchat/YaYtDpKRN6A2Njg1).
