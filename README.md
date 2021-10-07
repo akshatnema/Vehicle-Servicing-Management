@@ -1,1 +1,32 @@
-# Vehicle-Servicing-Management
+![image](https://user-images.githubusercontent.com/76521428/136322672-09fb169c-555c-48fd-bdeb-5eb51aa40e94.png)
+
+# Hacktoberfest 2021
+
+![Open-Source](https://img.shields.io/badge/-OPEN--SOURCE-%236fff00?style=for-the-badge&logo=github)
+![GitHub repo size](https://img.shields.io/github/repo-size/AKSHATNEMA/Vehicle-Servicing-Management?color=green&label=SIZE&logo=github&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/AKSHATNEMA/Vehicle-Servicing-Management?color=%2381f200&logo=github&style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/AKSHATNEMA/Vehicle-Servicing-Management?color=%2300c8ff&logo=github&style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/AKSHATNEMA/Vehicle-Servicing-Management?color=%23f6ff00&logo=github&style=for-the-badge)
+![Telegram](https://img.shields.io/badge/-TELEGRAM-%2300d5ff?style=for-the-badge&logo=TELEGRAM&color=39c3ed&url=https://t.me/joinchat/YaYtDpKRN6A2Njg1)
+
+# Vehicle Servicing Management
+Vehicle Service Management is a software application that aims to minimize the effort put in by companies to maintain their transactions and vehicle booking system. It manages all the transactions related to Customer profiling, Vehicle Service Bookings and Booking Details of the company. <br /> <br />
+In this software, anyone with a legal email ID can be added to the system as a customer. Customers can use the software only after they are registered to the system. One of the important perks of registration is that customers can opt for email reminders.
+
+## Want to Contribute in this project? 🚀
+
+Here are the steps you need to do:
+
+1. Fork this repo in your profile.
+2. Clone the forked repository in your system, by using this command in your Git bash/Command Prompt
+
+   `git clone https://github.com/<your-username>/Vehicle-Servicing-Management.git`
+  
+3. Make a seperate branch, other than main, to make changes in this project.
+4. Start the XAMPP (Apache and MYSQL) server in your system and make a blank Database named `vsm`, using XAMPP.
+5. In the project directory, go to `server` folder and run the following command in terminal: <br /><br />
+   `npm install` <br /> <br />
+   After all the node modules gets downloaded, run: <br /> <br />
+   `npm start`
+6. This will start the project in `localhost` server at port `8000`. Write `localhost:8000` in your browser to see the UI of the project.
+   
