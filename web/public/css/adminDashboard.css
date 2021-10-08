@@ -59,3 +59,12 @@
 .viewEmployeeBtn:hover, .addEmployeeBtn:hover, .deleteEmployeeBtn:hover{
     transform: scale(1.02);
 }
+
+.tableStyles {
+    margin-top: -3.125rem;
+}
+
+.buttonsHeading {
+    color:white; 
+    text-align: center;
+}
