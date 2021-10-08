@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/adminDashboard.css">
+  <title>Welcome to iCars services</title>
+</head>
+
+<%- include ("./components/navbar.ejs") %>
+
+  <body class="db-body">
+    <div class="sections">
+      <section class="section1">
+        <div style="margin-top: 200px;">
+        <h1 class="wlcome"> Welcome Admin!</h1>
+        </div>
+      </section>
+
+      <section class="section2">
+      
+        <div style="margin-top: 6.25rem;">
+        <h5 class="buttonsHeading">Employee Section:</h5>
+        <div class="tableStyles">
+        <table>
+            <tr>
+                <div class="buttons">
+                    <a type="button" class="btn btn-primary viewEmployeeBtn">View Employee details</a>
+                    <a type="button" class="btn btn-danger addEmployeeBtn">Add/Update Employee info</a>
+                    <a type="button" class="btn btn-warning deleteEmployeeBtn" style="color: white;">Delete Employee</a>
+            </tr>
+        </table>
+        </div>
+        </div>
+        <hr style="color: white">
+        <div>
+        <h5 class="buttonsHeading">Customer Section:</h5>
+        <div class="tableStyles">
+        <table>
+            <tr>
+                <div class="buttons">
+                    <a type="button" class="btn btn-primary viewEmployeeBtn">View Customer Details</a>
+                    <a type="button" class="btn btn-danger addEmployeeBtn">Add/Update Customer info</a>
+                    <a type="button" class="btn btn-warning deleteEmployeeBtn" style="color: white;">Delete Customer</a>
+            </tr>
+        </table>
+        </div>
+        </div>
+        <hr style="color: white;">
+        <div>
+        <h5 class="buttonsHeading">Manage Appointments:</h5>
+        <div class="tableStyles">
+        <table>
+            <tr>
+                <div class="buttons">
+                    <a type="button" class="btn btn-danger addEmployeeBtn">View Appointments</a>
+                    <a type="button" class="btn btn-warning deleteEmployeeBtn" style="color: white;">Assign Appointments</a>
+            </tr>
+        </table>
+        </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+
+  </body>
+  <script>
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+</html>
