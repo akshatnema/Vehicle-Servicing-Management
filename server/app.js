@@ -49,6 +49,9 @@ app.get('/feedback',function(req, res){
 app.get('/add-employee',function(req, res){
   res.render('add-employee');
 })
+app.get('/adminDashboard',function(req, res){
+  res.render('adminDashboard');
+})
 
 app.listen(port,function(){
     console.log("Server listening on http://localhost:8000");

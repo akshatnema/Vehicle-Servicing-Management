@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+.db-body{
+    /* background-image: linear-gradient(blue,pink); */
+    background-color: #000000;
+    /* background-image: linear-gradient(15deg,white 0%,rgb(12, 12, 12) 100%); */
+    /* background-color: rgb(196, 218, 238); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:rgb(243, 239, 239);
+    font-family: 'Montserrat' !important;
+}
+.sections{
+    display:flex;
+    justify-content: space-evenly;
+}
+.section1{
+    width: 45%;
+    height: auto;
+    /* background-image: linear-gradient(rgb(235, 231, 231),white); */
+}
+.section2{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.wlcome{
+    font-size: 7rem;
+    color: white;
+    position:center;
+    margin:7rem 1rem 0 0rem ;
+}
+.wlcm-hand{
+    width: 3rem;
+    height: 3rem;
+}
+
+.buttons{
+    margin:5rem 0 2.5rem 0rem;
+}
+
+.viewEmployeeBtn{
+    padding: 1rem;
+}
+
+
+.addEmployeeBtn{
+    padding: 1rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+.deleteEmployeeBtn{
+    padding: 1rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+.viewEmployeeBtn:hover, .addEmployeeBtn:hover, .deleteEmployeeBtn:hover{
+    transform: scale(1.02);
+}
