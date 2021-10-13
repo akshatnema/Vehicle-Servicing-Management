@@ -1,0 +1,19 @@
+.navbar-brand{
+    font-size:1.7rem;
+    font-family:'Pacifico';
+}
+
+.nav-link {
+    color:white;
+}
+.nav-item {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.nav-item a{
+    color:white;
+}
+
+.btn-outline-primary{
+    margin-right: 20px;
+}

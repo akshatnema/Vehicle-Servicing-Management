@@ -1,7 +1,5 @@
 var express = require('express');
 var path = require('path');
-var schema =require('./database/schema');
-var jobs =require('./database/jobs');
 var expressLayout = require('express-ejs-layouts');
 var mysql = require('mysql');
 var port = 8000;
@@ -41,8 +39,6 @@ app.get('/add-employee',function(req, res){
 app.get('/adminDashboard',function(req, res){
   res.render('adminDashboard');
 })
-
-
 
 
 app.listen(port,function(){

@@ -12,7 +12,6 @@
     font-size: 6rem;
 }
 .UR-form{
-    background-color:rgba(255, 255, 255, 0.76);
     margin: auto;
     margin-top: 2rem;
     padding: 2rem 2rem 1rem 2rem;
@@ -31,7 +30,6 @@
 .dropForServicings{
     * {
         box-sizing: border-box;
-        font-weight: 100;
       }
       
       a {
@@ -44,11 +42,8 @@
       }
       
       .dropdown {
-        position: relative;
-        height: 2rem;
-        font-size: 14px;
-        color: #333;
-      
+        color: black;
+        background-color: white;
         .dropdown-list {
           padding: 12px;
           background: #fff;
@@ -73,11 +68,7 @@
         
         .dropdown-label {
           display: block;
-          height: 30px;
-          background: #fff;
-          border: 1px solid #ccc;
           padding: 6px 12px;
-          line-height: 1;
           cursor: pointer;
           
           &:before {

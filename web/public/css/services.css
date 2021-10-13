@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+body {
+    background-color: black;
+    font-family: 'Montserrat' !important;
+    color: aliceblue;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      color: aliceblue;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 6rem;
+      color: aliceblue;
+      margin-top: 1rem;
+    }
+
+    .tableDiv {
+      align-self: center;
+    }
+
+    .table {
+      width: 50rem;
+    } 
