@@ -15,7 +15,7 @@ var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT AUTO_INCREMENT PRI
 
 var job_card_details="CREATE TABLE IF NOT EXISTS job_card_details(srno INT AUTO_INCREMENT PRIMARY KEY,card_id INT NOT NULL,job_id INT NOT NULL,price INT,Assign_dt DATE NOT NULL,Complete_dt DATE NOT NULL,Status BOOLEAN NOT NULL,Employee_id INT, FOREIGN KEY(card_id) REFERENCES job_card(card_id),FOREIGN KEY (Employee_id) REFERENCES employee(id), FOREIGN KEY (job_id) REFERENCES job(job_id))"
 
-var job="CREATE TABLE IF NOT EXISTS job(job_id INT AUTO_INCREMENT PRIMARY KEY,job_name VARCHAR(50) NOT NULL,price INT NOT NULL)"
+var job="CREATE TABLE IF NOT EXISTS job(job_id INT PRIMARY KEY,job_name VARCHAR(50) NOT NULL,price INT NOT NULL)"
 
 var employee="CREATE TABLE IF NOT EXISTS employee(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100) NOT NULL,post VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL,contact_no INT(10), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255))"
 
