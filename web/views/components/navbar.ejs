@@ -42,12 +42,14 @@
             <a class="nav-link" href="#" style="color:white">About Us</a>
           </li>
         </ul>
-        <a class="btn btn-outline-primary" href=<%- ("/take-appointment") %>>
+        <a class="btn btn-outline-primary" href=<button%- ("/take-appointment") %>>
           Get Appointment
         </a>
-        <a class="btn btn-danger" id="logoutBtn" href="">
+        <form action="/customer/logout" method="post">
+        <button type="submit" class="btn btn-danger" id="logoutBtn" >
           Log Out
-        </a>
+        </button>
+      </form>
       </div>
     </div>
   </nav>
