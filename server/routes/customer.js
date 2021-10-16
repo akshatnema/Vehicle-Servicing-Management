@@ -9,7 +9,7 @@ function protectLogin (req, res, next) {
     if (!session.userID) {
       console.log('Login to continue')
       console.log('login to continue')
-      return res.redirect('customer/login')
+      return res.redirect('/')
     } else if (session.userType === 'admin') {
       console.log('logged in as admin')
       res.redirect('customer/dashboard')
@@ -34,6 +34,7 @@ function already (email) {
   }
 
  router.get('/dashboard', protectLogin, (req, res)=>{
+   
      res.render('dashboard')
  })
 

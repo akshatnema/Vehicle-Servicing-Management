@@ -17,7 +17,7 @@ function protectLogin (req, res, next) {
   }
 
 router.get('/dashboard', protectLogin, (req, res)=>{
-    res.render('dashboard')
+    res.render('adminDashboard')
 })
 
 router.post('/login', (req, res) => {
