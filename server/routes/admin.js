@@ -28,6 +28,14 @@ router.get('/customerView', function(req, res, next) {
 });
 });
 
+router.get('/employeeView', function(req, res, next) {
+  var sql='SELECT * FROM employee';
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('employeeView', { title: 'Employee Details', userData: data});
+});
+});
+
 router.post('/login', (req, res) => {
     const { aemail, apass } = req.body
     const password = '12345'

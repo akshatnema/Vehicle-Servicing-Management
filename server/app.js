@@ -10,6 +10,7 @@ const session = require('express-session');
 const { nanoid } = require('nanoid')
 var schema=require('./database/schema');
 var jobs=require('./database/jobs');
+var employees = require('./database/employees')
 var mainroutes=require('./routes/main')
 var admin=require('./routes/admin')
 const sessionOptions = { secret: 'asecretkeyforsession', resave: false, saveUninitialized: false }
