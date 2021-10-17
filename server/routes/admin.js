@@ -36,6 +36,14 @@ router.get('/employeeView', function(req, res, next) {
 });
 });
 
+router.get('/feedbackView', function(req, res, next) {
+  var sql='SELECT * FROM feedback';
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('feedbackView', { title: 'Feedbacks', userData: data});
+});
+});
+
 router.post('/login', (req, res) => {
     const { aemail, apass } = req.body
     const password = '12345'
