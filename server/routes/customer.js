@@ -34,8 +34,15 @@ function already (email) {
   }
 
  router.get('/dashboard', protectLogin, (req, res)=>{
-   
-     res.render('dashboard')
+    const q= `SELECT * FROM customer WHERE id="${session.userID}"`
+    con.query(q,(err,data,fields)=>{
+      if (err) {
+        console.log(err);
+        res.redirect('/customer/dashboard')
+      }
+        res.render('dashboard',{userdata: data})
+    })
+     
  })
 
  router.post('/logout', (req, res) => {
@@ -118,8 +125,8 @@ router.post('/register',async function(req, res) {
         const hash = await bcrypt.hash(password, 5)
         // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
 
-        const query ="INSERT INTO customer (name,email,street,city,state,password) VALUES (?,?,?,?,?,?)"
-        con.query(query,[name,email,address,city,state,hash], (err,result) =>{
+        const query ="INSERT INTO customer (name,email,street,city,state,password,mobile) VALUES (?,?,?,?,?,?,?)"
+        con.query(query,[name,email,address,city,state,hash,mobile], (err,result) =>{
            if (err){
                console.log(err);
                console.log('Something went wrong')
