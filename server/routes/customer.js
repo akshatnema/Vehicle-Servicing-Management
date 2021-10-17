@@ -52,6 +52,24 @@ function already (email) {
   res.redirect('/')
 })
 
+router.get('/feedback',protectLogin, (req, res)=>{
+  res.render('feedBack',{userid:session.userID})
+})
+
+router.post('/feedback', (req, res)=>{
+  const {userid,text}=req.body
+  const sql=`INSERT INTO feedback(customer_id,content) VALUES('${session.userID}','${text}')`
+  con.query(sql, (err,result)=>{
+      if(err){
+        console.log(err)
+        res.redirect('/customer/feedback')
+      }
+      else{
+        console.log("Feedback submitted");
+        res.redirect('/customer/dashboard')
+      }
+  })
+})
 
 router.get('/login',(req,res)=>{
   if (session.userType === 'admin') {

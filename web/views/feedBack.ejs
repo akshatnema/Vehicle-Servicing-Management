@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="stylesheet" href="/css/feedback.css">
     <title>iCars</title>
 </head>
 
@@ -22,16 +22,14 @@
     <center>  
         <div class="form">
             
-        <form class="UR-form">
+        <form class="UR-form" action="/customer/feedback" method="post">
            
              <div class="mb-3 urf-named">
-                <input name="C_id" type="text" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Customer ID">
+                <input name="userid" type="text" class="form-control urf-namei" id="formGroupExampleInput" placeholder="Customer ID" disabled>
              </div>
-              
-
             
             <div class="mb-4 urf-named"> 
-                <textarea class="form-control urf-namei urf-address textbox" aria-label="feedback" placeholder="write your feedback here"></textarea>
+                <textarea class="form-control urf-namei urf-address textbox" name="text" aria-label="feedback" placeholder="write your feedback here"></textarea> 
             </div>
             <button type="submit" class="btn btn-primary signupBtn">Submit</button>
             
@@ -47,5 +45,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-
+    <script>
+        var customer_id=document.getElementById("formGroupExampleInput")
+        customer_id.value='<%= userid %>'
+    </script>
 </html>

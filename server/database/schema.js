@@ -19,7 +19,7 @@ var job="CREATE TABLE IF NOT EXISTS job(job_id INT PRIMARY KEY,job_name VARCHAR(
 
 var employee="CREATE TABLE IF NOT EXISTS employee(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100) NOT NULL,post VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL,contact_no INT(10), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255))"
 
-var feedback="CREATE TABLE IF NOT EXISTS feedback(card_id INT PRIMARY KEY, content VARCHAR(255), FOREIGN KEY (card_id) REFERENCES job_card(card_id))"
+var feedback="CREATE TABLE IF NOT EXISTS feedback(customer_id INT, content VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customer(id))"
 
 var vehicle="CREATE TABLE IF NOT EXISTS vehicle(chasis_no INT PRIMARY KEY,customer_id INT NOT NULL,model_name VARCHAR(255),model_no VARCHAR(255),brand VARCHAR(255),purchase_date DATE NOT NULL,stage_1 BOOLEAN, stage_2 BOOLEAN, FOREIGN KEY (customer_id) REFERENCES customer(id))"
 

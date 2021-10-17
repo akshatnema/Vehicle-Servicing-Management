@@ -6,6 +6,11 @@ body{
     font-family: 'Montserrat' !important;
 }
 
+header{
+    text-align: center;
+    margin-top: 1rem;
+    color: white;
+}
 
 .UR-body{
     background-size: 50rem;
