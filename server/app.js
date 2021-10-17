@@ -9,7 +9,6 @@ const session = require('express-session');
 const { nanoid } = require('nanoid')
 var schema=require('./database/schema');
 var jobs=require('./database/jobs');
-var customer=require('./routes/customer');
 var mainroutes=require('./routes/main')
 var admin=require('./routes/admin')
 const sessionOptions = { secret: 'asecretkeyforsession', resave: false, saveUninitialized: false }
@@ -23,7 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(session(sessionOptions))
 app.use('/',mainroutes);
 app.use('/jobs', jobsRouter);
-app.use('/customer', customer);
+// app.use('/customer', customer);
 app.use('/admin',admin)
 // app.get('/',function(req, res){
 //   res.render('index');
