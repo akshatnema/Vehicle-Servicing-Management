@@ -20,6 +20,14 @@ router.get('/dashboard', protectLogin, (req, res)=>{
     res.render('adminDashboard')
 })
 
+router.get('/customerView', function(req, res, next) {
+  var sql='SELECT * FROM customer';
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('customerView', { title: 'Customer Details', userData: data});
+});
+});
+
 router.post('/login', (req, res) => {
     const { aemail, apass } = req.body
     const password = '12345'
