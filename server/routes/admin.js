@@ -28,17 +28,54 @@ router.get("/customerView", function (req, res, next) {
   });
 });
 
-router.post("/login", (req, res) => {
-  const { aemail, apass } = req.body;
-  const password = "12345";
-  const admin = "admin@gmail.com";
-  if (aemail === admin && apass === password) {
-    session.userType = "admin";
-    session.userID = "10000";
-    res.redirect("/admin/dashboard");
-  } else {
-    console.log("Wrong Credentials");
-    res.redirect("/admin");
-  }
+router.get('/employeeView', function(req, res, next) {
+  var sql='SELECT * FROM employee';
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('employeeView', { title: 'Employee Details', userData: data});
 });
-module.exports = router;
+});
+
+router.get('/feedbackView', function(req, res, next) {
+  var sql='SELECT * FROM feedback';
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('feedbackView', { title: 'Feedbacks', userData: data});
+});
+});
+
+router.get('/deleteEmployee', protectLogin, (req, res)=>{
+  res.render('deleteEmployee')
+})
+
+router.post('/deleteEmployee',async function(req, res) {
+  const { id,email } = req.body
+  // DELETE FROM `employee` WHERE 0
+      const query ="DELETE FROM employee WHERE id=? AND email=?"
+      con.query(query,[id,email], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } else {
+         console.log('successfully deleted!');
+         }
+         res.redirect('/admin/deleteEmployee')
+      })
+  });
+  
+
+router.post('/login', (req, res) => {
+    const { aemail, apass } = req.body
+    const password = '12345'
+    const admin='admin@gmail.com'
+    if(aemail===admin && apass===password) {
+        session.userType='admin'
+        session.userID='10000'
+        res.redirect('/admin/dashboard')
+    }
+    else{
+        console.log('Wrong Credentials')
+        res.redirect('/admin')
+    }
+  })
+  module.exports = router;

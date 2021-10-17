@@ -32,9 +32,10 @@
         <table>
             <tr>
                 <div class="buttons">
-                    <a type="button" class="btn btn-primary viewEmployeeBtn">View Employee details</a>
+                    <a type="button" class="btn btn-primary viewEmployeeBtn" href=<%- ("employeeView") %>>View Employee details</a>
                     <a type="button" class="btn btn-danger addEmployeeBtn">Add/Update Employee info</a>
-                    <a type="button" class="btn btn-warning deleteEmployeeBtn" style="color: white;">Delete Employee</a>
+                    <a type="button" class="btn btn-warning deleteEmployeeBtn" style="color: white;" href=<%- ("deleteEmployee") %>>Delete Employee</a>
+                </div>
             </tr>
         </table>
         </div>
@@ -70,7 +71,8 @@
         <table>
             <tr>
                 <div class="buttons">
-                    <center><a type="button" class="btn btn-primary addEmployeeBtn">View Feedbacks</a></center>
+                    <center><a type="button" class="btn btn-primary addEmployeeBtn" href=<%- ("feedbackView") %>>View Feedbacks</a></center>
+                </div>
             </tr>
         </table>
         </div>

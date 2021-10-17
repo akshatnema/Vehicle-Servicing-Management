@@ -1,0 +1,129 @@
+<!-- const con = require('./sql_connect'); -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+    * {
+      color: white;
+    }
+    body {
+      background-color: black;
+      font-family: 'Montserrat' !important;
+      color: white;
+    }
+    .heading {
+      text-align: center;
+      font-size: 6rem;
+      color: white;
+      margin-top: 1rem;
+    }
+    .tableDiv {
+      align-self: center;
+    }
+    .table {
+      max-width: 90%;
+      text-align: center;
+    }
+  </style>
+  <title>Customer Details</title>
+</head>
+
+<%- include ("./components/navbar.ejs") %>
+
+  <body>
+    <div class="heading">Employee Details</div>
+
+    <div class="tableDiv">
+     <center> <table class="table table-striped">
+        <thead>
+            <!-- (id,name,post, email, contact_no,street,city,state) -->
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Post</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Street</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+            <!-- (id,name,post, email, contact_no,street,city,state) -->
+          <% if(userData.length!=0) { var i=1; userData.forEach(function(data){ %>
+            <tr>
+              <th scope="row">
+                <%=data.id %>
+              </th>
+              <td>
+                <%=data.name %>
+              </td>
+              <td>
+                <%=data.post %>
+              </td>
+              <td>
+                <%=data.email %>
+              </td>
+              <td>
+                <%=data.contact_no %>
+              </td>
+              <td>
+                <%=data.street %>
+              </td>
+              <td>
+                <%=data.city %>
+              </td>
+              <td>
+                <%=data.state %>
+              </td>
+            </tr>
+            <% i++; }) %>
+              <% } else{ %>
+                <tr>
+                  <td colspan="7">No Data Found</td>
+                </tr>
+                <% } %>
+
+        </tbody>
+      </table>
+    </center>
+    </div>
+
+
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+</html>
+
+<!-- <tr>
+                <th scope="row">1</th>
+                <td style="width: 60%;text-align: center;">Mark</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td style="width: 60%;text-align: center;">Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td  style="width: 60%;text-align: center;">Larry the Bird</td>
+                <td>@fat</td>
+              </tr>
+               -->
