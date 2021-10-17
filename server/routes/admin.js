@@ -44,6 +44,26 @@ router.get('/feedbackView', function(req, res, next) {
 });
 });
 
+router.get('/deleteEmployee', protectLogin, (req, res)=>{
+  res.render('deleteEmployee')
+})
+
+router.post('/deleteEmployee',async function(req, res) {
+  const { id,email } = req.body
+  // DELETE FROM `employee` WHERE 0
+      const query ="DELETE FROM employee WHERE id=? AND email=?"
+      con.query(query,[id,email], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } else {
+         console.log('successfully deleted!');
+         }
+         res.redirect('/admin/deleteEmployee')
+      })
+  });
+  
+
 router.post('/login', (req, res) => {
     const { aemail, apass } = req.body
     const password = '12345'
