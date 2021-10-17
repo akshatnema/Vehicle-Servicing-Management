@@ -57,11 +57,30 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log(err);
              console.log('Something went wrong')
          } else {
-         console.log('successfully deleted!');
+         console.log('successfully deleted  Employee!');
          }
          res.redirect('/admin/deleteEmployee')
       })
   });
+
+  router.get('/deleteCustomer', protectLogin, (req, res)=>{
+    res.render('deleteCustomer')
+  })
+
+  router.post('/deleteCustomer',async function(req, res) {
+    const { id,email } = req.body
+    // DELETE FROM `employee` WHERE 0
+        const query ="DELETE FROM customer WHERE id=? AND email=?"
+        con.query(query,[id,email], (err,result) =>{
+           if (err){
+               console.log(err);
+               console.log('Something went wrong')
+           } else {
+           console.log('successfully deleted Customer!');
+           }
+           res.redirect('/admin/deleteCustomer')
+        })
+    });
   
 
 router.post('/login', (req, res) => {
