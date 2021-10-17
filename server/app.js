@@ -4,6 +4,7 @@ var expressLayout = require('express-ejs-layouts');
 var mysql = require('mysql');
 var port = 8000;
 var jobsRouter = require('./routes/jobs');
+var customer=require('./routes/customer');
 var app = express();
 const session = require('express-session');
 const { nanoid } = require('nanoid')
@@ -22,7 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(session(sessionOptions))
 app.use('/',mainroutes);
 app.use('/jobs', jobsRouter);
-// app.use('/customer', customer);
+app.use('/customer', customer);
 app.use('/admin',admin)
 // app.get('/',function(req, res){
 //   res.render('index');
