@@ -144,4 +144,58 @@ router.post('/register',async function(req, res) {
 })
 
 
+// // when user want to register vehicle
+ router.get('/registerVehicle', function(req, res, next) {
+  
+   res.render('registerVehicle', { title: 'vehicles'});
+
+ });
+
+router.post('/registerVehicle',async function(req,res){
+  const { vehicleType,model_name,model_number,brand,purchase_date,chasis_no } = req.body;
+  
+  const userId=session.userID;
+
+  var q=`INSERT INTO vehicle(chasis_no,customer_id,model_name,model_no,brand,purchase_date) VALUES (?,?,?,?,?,?)`
+  
+  con.query(q,[chasis_no,userId,model_name,model_number,brand,purchase_date],(err,data,fields)=>{
+    if (err) {
+        console.log(err)
+        res.redirect('dashboard')
+    }
+    else {
+       console.log('New Vehicle Added')
+       res.redirect('dashboard')
+    
+    }
+})
+})
+
+
+
+router.get('/take-appointment',(req, res) => {
+  const userID=session.userID;
+  var sql1 = `SELECT * FROM vehicle WHERE customer_id="${userID}"`;
+  var sql2 = 'SELECT * FROM job';
+  con.query(sql1, function(err, data1){
+      if (err) throw err; 
+      //console.log(data1); //this should print
+
+      con.query(sql2, function(err, data2) {
+          if (err) throw err;
+        //  console.log(data2);
+
+          res.render('take-appointment', {data1:data1, data2:data2});
+      });  
+  });
+}) 
+
+
+router.post('/take-appointment',async function(req,res){
+  
+
+})
+
+
+
 module.exports=router;

@@ -22,14 +22,7 @@
             <a class="nav-link" aria-current="page" href="#" style="color:white">Home</a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href=<%- ("/jobs/services") %>
-              aria-expanded="false"
-              style="color:white"
-            >
-              Services
-            </a>
+            <a class="nav-link" href=<%- ("/jobs/services") %> aria-expanded="false" style="color:white">  Service </a>
           </li>
          
           <li class="nav-item">
@@ -42,9 +35,7 @@
             <a class="nav-link" href="#" style="color:white">About Us</a>
           </li>
         </ul>
-        <a class="btn btn-outline-primary" href=<button%- ("/take-appointment") %>>
-          Get Appointment
-        </a>
+        <a class="btn btn-outline-primary" href=<%- ("/customer/take-appointment") %>>   Get Appointment</a>
         <form action="/customer/logout" method="post">
         <button type="submit" class="btn btn-danger" id="logoutBtn" >
           Log Out

@@ -30,6 +30,7 @@
 .dropForServicings{
     * {
         box-sizing: border-box;
+        border-radius: 0.2rem;
       }
       
       a {
@@ -103,13 +104,16 @@
 .date_of_appointment{
   margin-bottom: 1rem;
 }
+.license{
+  margin-top: 1.3rem;
+}
 .dates{
   width:31rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   padding:1rem;
   border: none;
-  height: 2rem;
+  height: 2.4rem;
 }
 
 .urf-address{

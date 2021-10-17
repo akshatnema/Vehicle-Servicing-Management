@@ -25,6 +25,9 @@ app.use('/',mainroutes);
 app.use('/jobs', jobsRouter);
 app.use('/customer', customer);
 app.use('/admin',admin)
+
+
+
 // app.get('/',function(req, res){
 //   res.render('index');
 // })
