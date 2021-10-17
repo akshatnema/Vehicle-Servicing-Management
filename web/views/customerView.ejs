@@ -15,24 +15,25 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
     * {
-      color: aliceblue;
+      color: white;
     }
     body {
       background-color: black;
       font-family: 'Montserrat' !important;
-      color: aliceblue;
+      color: white;
     }
     .heading {
       text-align: center;
       font-size: 6rem;
-      color: aliceblue;
+      color: white;
       margin-top: 1rem;
     }
     .tableDiv {
       align-self: center;
     }
     .table {
-      width: 50rem;
+      max-width: 90%;
+      text-align: center;
     }
   </style>
   <title>Customer Details</title>
@@ -48,12 +49,11 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col " style="width: 60%;text-align: center;">Name</th>
-            <th scope="col " style="width: 60%;text-align: center;">Email Passwaord</th>
-            <th scope="col " style="width: 60%;text-align: center;">Password</th>
-            <th scope="col " style="width: 60%;text-align: center;">Street</th>
-            <th scope="col " style="width: 60%;text-align: center;">City</th>
-            <th scope="col " style="width: 60%;text-align: center;">State</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Street</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
           </tr>
         </thead>
         <tbody>
@@ -63,22 +63,19 @@
               <th scope="row">
                 <%=data.id %>
               </th>
-              <td style="width: 75%;text-align: center;">
+              <td>
                 <%=data.name %>
               </td>
-              <td style="width: 75%;text-align: center;">
+              <td>
                 <%=data.email %>
               </td>
-              <td style="width: 75%;text-align: center;">
-                <%=data.password %>
-              </td>
-              <td style="width: 75%;text-align: center;">
+              <td>
                 <%=data.street %>
               </td>
-              <td style="width: 75%;text-align: center;">
+              <td>
                 <%=data.city %>
               </td>
-              <td style="width: 75%;text-align: center;">
+              <td>
                 <%=data.state %>
               </td>
             </tr>
