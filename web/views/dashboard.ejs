@@ -20,7 +20,7 @@
     <div class="sections">
       <section class="section1">
         <h1 class="wlcome">
-          <span style="color: aliceblue;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
+          <span style="color: white;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
         </h1>
 
         <div class="buttons">
@@ -32,12 +32,13 @@
       </section>
 
       <section class="section2">
+       
         <div class="user_image_d">
           <img class="user-image" src="/images/dashboard/user.png">
         </div>
 
         <div class="name_of_user">
-          Paras Gami
+          <%=userdata[0].name %> 
         </div>
 
         <div class="phone-details" style="display: flex;">
@@ -45,14 +46,12 @@
             <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
             <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
           </a>
-          <div class="phone-number">98005080809</div>
+          <div class="phone-number"><%= userdata[0].mobile %> </div>
         </div>
-
-
 
         <div class="phone-details emails" style="display: flex;">
           <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
-          <div class="phone-number">parasgami3@gmail.com</div>
+          <div class="phone-number"><%=userdata[0].email %> </div>
         </div>
 
 
@@ -60,16 +59,11 @@
           <a target="__blank" href="https://www.google.com/maps"> 
             <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
             <i class="fas fa-home fa-2x phone-call-img"></i> </a>
-          <div class="phone-number">403 street, city, state</div>
+          <div class="phone-number"><%=userdata[0].street %> <%=userdata[0].city %> <%=userdata[0].state %> </div>
         </div>
-
+       
       </section>
     </div>
-
-
-
-
-
 
   </body>
   <script>

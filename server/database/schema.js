@@ -9,7 +9,7 @@ con.connect(function(err) {
       });
   });
   
-var customer ="CREATE TABLE IF NOT EXISTS customer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255),email VARCHAR(255),password VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255))"
+var customer ="CREATE TABLE IF NOT EXISTS customer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255),email VARCHAR(255),password VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255), mobile INT(10))"
 
 var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, customer_id INT NOT NULL,street VARCHAR(30) NOT NULL, city VARCHAR(30) NOT NULL, state VARCHAR(30) NOT NULL,job_id INT NOT NULL,license_no INT NOT NULL, FOREIGN KEY (customer_id) REFERENCES customer(id))"  
 
