@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
+const bcrypt = require('bcrypt')
 
 var router = express.Router();
 
@@ -67,6 +68,134 @@ router.post('/deleteEmployee',async function(req, res) {
     res.render('addUpdateEmployee')
   })
 
+  router.get('/addUpdateCustomer', protectLogin, (req, res)=>{
+    res.render('addUpdateCustomer')
+  })
+
+  router.get('/addCustomer', protectLogin, (req, res)=>{
+    res.render('addCustomer')
+  })
+
+  function already (email) {
+    const q0 = `SELECT * FROM customer WHERE email="${email}";`
+    con.query(q0, (err, result) => {
+      if (err) {
+        throw err
+      }
+      if (result.length === 0) {
+        return 'not found'
+      } else {
+        return 'found'
+      }
+    })
+  }
+
+  router.post('/addCustomer',async function(req, res) {
+    const { name,email,password,street,city,state,mobile } = req.body
+    if(already(email)==='found'){
+        console.log('This email is already registered')
+        res.redirect('/admin/addCustomer')
+    }
+    else{
+        const hash = await bcrypt.hash(password, 5)
+        // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
+
+        const query ="INSERT INTO customer (name,email,password,street,city,state,mobile) VALUES (?,?,?,?,?,?,?)"
+        con.query(query,[name,email,hash,street,city,state,mobile], (err,result) =>{
+           if (err){
+               console.log(err);
+               console.log('Something went wrong')
+           } else {
+           console.log('successfully admin has added Customer');
+           }
+        })
+        res.redirect('/admin/addCustomer')
+        
+    }
+})
+
+router.get('/updateCustomer', protectLogin, (req, res)=>{
+  res.render('updateCustomer')
+})
+
+router.post('/updateCustomer',async function(req, res) {
+  const { id,exampleRadios,correctedInfo } = req.body
+  // console.log(correctedInfo)
+  if(exampleRadios==='option1'){
+    const query ="UPDATE customer SET name=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted name');
+       }
+    })
+  }
+  else if(exampleRadios==='option2'){
+    const query ="UPDATE customer SET email=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted email');
+       }
+    })
+  }
+  else if(exampleRadios==='option3'){
+    const query ="UPDATE customer SET street=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted street');
+       }
+    })
+  }
+  else if(exampleRadios==='option4'){
+    const query ="UPDATE customer SET city=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted city');
+       }
+    })
+  }
+  else if(exampleRadios==='option5'){
+    const query ="UPDATE customer SET state=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted state');
+       }
+    })
+  }
+  else if(exampleRadios==='option6'){
+    const query ="UPDATE customer SET mobile=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted mobile');
+       }
+    })
+  }
+  res.redirect('/admin/updateCustomer')
+})
+
   
   router.get('/updateEmployee', protectLogin, (req, res)=>{
     res.render('updateEmployee')
@@ -83,7 +212,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted name');
+         console.log('successfully inserted name');
          }
       })
     }
@@ -95,7 +224,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted post');
+         console.log('successfully inserted post');
          }
       })
     }
@@ -107,7 +236,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted eamil');
+         console.log('successfully inserted eamil');
          }
       })
     }
@@ -119,7 +248,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted contact no.');
+         console.log('successfully inserted contact no.');
          }
       })
     }
@@ -131,7 +260,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted street');
+         console.log('successfully inserted street');
          }
       })
     }
@@ -143,7 +272,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted city');
+         console.log('successfully inserted city');
          }
       })
     }
@@ -155,7 +284,7 @@ router.post('/deleteEmployee',async function(req, res) {
              console.log('Something went wrong')
          } 
          else {
-         console.log('successfully inserseted state');
+         console.log('successfully inserted state');
          }
       })
     }
@@ -184,7 +313,7 @@ router.post('/deleteEmployee',async function(req, res) {
   router.get('/addEmployee', protectLogin, (req, res)=>{
       res.render('add-employee')
     })
-    router.post('/addEmployee',async function(req, res) {
+  router.post('/addEmployee',async function(req, res) {
       const { name,post,email,mobile,street,city,state } = req.body
       console.log(post)
       if (post=='1') var postValue='Ford';
