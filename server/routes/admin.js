@@ -67,6 +67,7 @@ router.post('/deleteEmployee',async function(req, res) {
     res.render('addUpdateEmployee')
   })
 
+  
   router.get('/updateEmployee', protectLogin, (req, res)=>{
     res.render('updateEmployee')
   })
@@ -180,6 +181,28 @@ router.post('/deleteEmployee',async function(req, res) {
         })
     });
   
+  router.get('/addEmployee', protectLogin, (req, res)=>{
+      res.render('add-employee')
+    })
+    router.post('/addEmployee',async function(req, res) {
+      const { name,post,email,mobile,street,city,state } = req.body
+      console.log(post)
+      if (post=='1') var postValue='Ford';
+      else if(post=='2') var postValue='Technician';
+      else if(post=='3') var postValue='Manager';
+      console.log(postValue)
+      const query ="INSERT INTO employee (name, post, email, contact_no, street, city, state)  VALUES (?,?,?,?,?,?,?)"
+          con.query(query,[name,postValue,email,mobile,street,city,state], (err,result) =>{
+             if (err){
+                 console.log(err);
+                 console.log('Something went wrong')
+                 res.redirect('/register')
+             } else {
+             console.log('successfully added Employee');
+             }
+          })
+          res.redirect('/admin/addEmployee')
+  })
 
 router.post('/login', (req, res) => {
     const { aemail, apass } = req.body

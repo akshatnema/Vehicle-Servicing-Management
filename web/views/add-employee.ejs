@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add an Employee</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="./css/add-employee.css" />
+    <title>Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/css/operationDelete.css" />
 </head>
-
-<body class="body">
-    <%- include ("./components/navbar") %>
-        <div class="components">
-            <center><h1 style="text-align: center;margin-bottom: 2rem;" class="heading">Add Employee</h1></center>
-            <center>
-                
-                <div class="forms">
-                    <form>
-                        <div class="mb-3">
-                            <input type="email" name="emp-email" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Email">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="emp-name" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Name">
-                        </div>
-                        <div class="mb-3">
-                            <input type="number" name="emp-mobile" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Mobile">
-                        </div>
-                        <div class="mb-3 form-components">
-                            <select class="form-select" required name="" aria-placeholder="Vehicle Type" aria-label="Default select example">
-                             <option selected>Post</option>
-                             <option name="technician" value="1">Ford</option>
-                             <option name="supervisor" value="2">Technician</option>
-                             <option name="manager" value="2">Manager</option>
-                           </select>
-                        </div>
-                        
-                        <div class="mb-3 urf-named"> 
-                            <textarea class="form-control urf-namei urf-address" required name="emp-address" aria-label="address" placeholder="Address"></textarea>
-                        </div>
-                        <div class="mb-3 urf-named">
-                           <input  type="text" name="emp-city"  required class="form-control urf-namei" id="formGroupExampleInput" placeholder="City">
-                        </div>
-                        <div class="mb-3 urf-named">
-                            <input type="text" name="emp-state" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="State">
-                        </div>
+<body class="UR-body">
+    <header>
+        <h2>Add Employee</h2>
+    </header>
+      <div class="container" style="display:flex;">
+         <div class="delete-form" style="margin: auto;">
+        <form class="UR-form" action="/admin/addEmployee" method="POST">
+            <div class="mb-3">
+                <input type="text" name="name" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="mb-3 form-components">
+                <p>Post:</p>
+                <select class="form-select" required name="post" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                 <option name="post" value="1" selected>Ford</option>
+                 <option name="post" value="2">Technician</option>
+                 <option name="post" value="3">Manager</option>
+               </select>
+            </div>
+            <div class="mb-3">
+                <input type="email" name="email" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            
+            <div class="mb-3">
+                <input type="number" name="mobile" required class="form-control" id="" aria-describedby="emailHelp" placeholder="Mobile">
+            </div>
+            <div class="mb-3 urf-named"> 
+                <textarea class="form-control urf-namei urf-address" required name="street" aria-label="address" placeholder="Address"></textarea>
+            </div>
+            <div class="mb-3 urf-named">
+               <input  type="text" name="city"  required class="form-control urf-namei" id="formGroupExampleInput" placeholder="City">
+            </div>
+            <div class="mb-3 urf-named">
+                <input type="text" name="state" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="State">
+            </div>
 
 
 
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </form>
-                </div>
-            </center>
-        </div>
-
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+       </div>
+   
+    </div>
+    
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
-
+ <!-- Option 1: Bootstrap Bundle with Popper -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </html>
