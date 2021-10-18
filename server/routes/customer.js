@@ -197,6 +197,16 @@ router.post('/registerVehicle',async function(req,res){
 })
 
 
+router.get('/services', function(req, res, next) {
+  var sql='SELECT * FROM job';
+  const userID=session.userID;
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('services', { title: 'JOBS', userData: data,id:userID});
+});
+});
+
+
 
 router.get('/take-appointment',(req, res) => {
   const userID=session.userID;

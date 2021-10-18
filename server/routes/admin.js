@@ -10,12 +10,33 @@ function protectLogin(req, res, next) {
     return res.redirect("/admin");
   } else if (session.userType === "customer") {
     console.log("logged in as customer");
-    res.redirect("/admin/customer");
+    res.redirect("/customer/dashboard");
   } else {
     next();
   }
 }
+router.post('/login', (req, res) => {
+    const { aemail, apass } = req.body
+    const password = '12345'
+    const admin='admin@gmail.com'
+    if(aemail===admin && apass===password) {
+        session.userType='admin'
+        session.userID='10000'
+        res.redirect('/admin/dashboard')
+    }
+    else{
+        console.log('Wrong Credentials')
+        res.redirect('/admin')
+    }
+  })
 
+
+router.post('/logout', (req, res) => {
+    console.log('logout successfully')
+    session.userID = null
+    session.userType = null
+    res.redirect('/')
+  })
 router.get("/dashboard", protectLogin, (req, res) => {
   res.render("adminDashboard");
 });
@@ -82,19 +103,22 @@ router.post('/deleteEmployee',async function(req, res) {
         })
     });
   
+    
+  router.get('/services', function(req, res, next) {
+      var sql='SELECT * FROM job';
+      userID='admin@gmail.com'
+      con.query(sql, function (err, data, fields) {
+      if (err) throw err;
+      res.render('services', { title: 'JOBS', userData: data,id:userID});
+    });
+  });
+  
 
-router.post('/login', (req, res) => {
-    const { aemail, apass } = req.body
-    const password = '12345'
-    const admin='admin@gmail.com'
-    if(aemail===admin && apass===password) {
-        session.userType='admin'
-        session.userID='10000'
-        res.redirect('/admin/dashboard')
-    }
-    else{
-        console.log('Wrong Credentials')
-        res.redirect('/admin')
-    }
-  })
+  router.get('/appointments', function(req, res, next) {
+      var sql='SELECT * FROM job_card_details';
+      con.query(sql, function (err, data, fields) {
+      if (err) throw err;
+      res.render('viewAppointment', { title: 'JOBS', userData: data});
+    });
+  });
   module.exports = router;
