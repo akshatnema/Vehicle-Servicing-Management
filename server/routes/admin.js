@@ -63,6 +63,104 @@ router.post('/deleteEmployee',async function(req, res) {
       })
   });
 
+  router.get('/addUpdateEmployee', protectLogin, (req, res)=>{
+    res.render('addUpdateEmployee')
+  })
+
+  router.get('/updateEmployee', protectLogin, (req, res)=>{
+    res.render('updateEmployee')
+  })
+
+  router.post('/updateEmployee',async function(req, res) {
+    const { id,exampleRadios,correctedInfo } = req.body
+    // console.log(correctedInfo)
+    if(exampleRadios==='option1'){
+      const query ="UPDATE employee SET name=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted name');
+         }
+      })
+    }
+    else if(exampleRadios==='option2'){
+      const query ="UPDATE employee SET post=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted post');
+         }
+      })
+    }
+    else if(exampleRadios==='option3'){
+      const query ="UPDATE employee SET email=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted eamil');
+         }
+      })
+    }
+    else if(exampleRadios==='option4'){
+      const query ="UPDATE employee SET contact_no=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted contact no.');
+         }
+      })
+    }
+    else if(exampleRadios==='option5'){
+      const query ="UPDATE employee SET street=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted street');
+         }
+      })
+    }
+    else if(exampleRadios==='option6'){
+      const query ="UPDATE employee SET city=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted city');
+         }
+      })
+    }
+    else if(exampleRadios==='option7'){
+      const query ="UPDATE employee SET state=? WHERE id=?"
+      con.query(query,[correctedInfo,id], (err,result) =>{
+         if (err){
+             console.log(err);
+             console.log('Something went wrong')
+         } 
+         else {
+         console.log('successfully inserseted state');
+         }
+      })
+    }
+    res.redirect('/admin/updateEmployee')
+})
+
   router.get('/deleteCustomer', protectLogin, (req, res)=>{
     res.render('deleteCustomer')
   })
