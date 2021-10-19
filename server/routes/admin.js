@@ -351,4 +351,15 @@ router.get('/feedbackView', function(req, res, next) {
 });
 
 
+
+router.get('/services', function(req, res, next) {
+  var sql='SELECT * FROM job';
+  const userID="admin@gmail.com";
+  con.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('services', { title: 'JOBS', userData: data,id:userID});
+});
+});
+
+
   module.exports = router;
