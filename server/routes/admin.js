@@ -12,7 +12,7 @@ function protectLogin(req, res, next) {
     return res.redirect("/admin");
   } else if (session.userType === "customer") {
     console.log("logged in as customer");
-    res.redirect("/admin/customer");
+    res.redirect("/customer/dashboard");
   } else {
     next();
   }
@@ -51,6 +51,13 @@ router.post('/login', (req, res) => {
       console.log('Wrong Credentials')
       res.redirect('/admin')
   }
+})
+
+router.post('/logout', (req, res) => {
+  console.log('logout successfully')
+  session.userID = null
+  session.userType = null
+  res.redirect('/')
 })
 
 // Employee Section

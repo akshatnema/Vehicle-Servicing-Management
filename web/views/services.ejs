@@ -19,7 +19,11 @@
   <title>See our Services</title>
 </head>
 
-<%- include ("./components/navbar.ejs") %>
+<% if(id=="admin@gmail.com")
+   {%> <%- include ("./components/navbar1.ejs") %> <%}
+   else
+   {%> 
+   <%- include ("./components/navbar.ejs") %> <%}%>
 
   <body>
     <div class="heading">See Our Services</div>
