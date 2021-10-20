@@ -28,49 +28,30 @@
                 <form class="UR-form" action="/customer/take-appointment" method="POST">
 
                     <div class="mb-3 form-components">
-                        <select class="form-select" name="vehicles"  onchange="location = this.value;" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                        <select class="form-select" name="vehicles" aria-placeholder="Vehicle Type" aria-label="Default select example">
 
-
+                            <option selected="selected" disabled="disabled">Select your Vehicle</option> 
                             <!-- Write a query to fetch the vehicle table and show the names -->
                              <% if(data1.length!=0) { var i=1; data1.forEach(function(data){ %>
-                                <option value=<% `${i}` %>><%= data.model_name %></option>
+                                <option value=<% i %>><%= data.model_name %></option>
                                 <% i++; }) %>
                                   <% } else{ %>
                                    <a href=<%- ("/registerVehicle")%>> <option value=<%- ("/registerVehicle") %> style="color:red;">  Please, First add your Vehicle</option></a>
                                     <% } %>
-                                  
-                           
-                    
                         </select>
                     </div>
-
-                    <!-- Servicing -->
-                    <div class="mb-3 my-2 dropForServicings">
-
-                        <div  class="dropdown" data-control="checkbox-dropdown" multiple>
-
-                            <label class="dropdown-label">Full servicing</label>
-
-                            <div class="dropdown-list">
-                                <a href="#" data-toggle="check-all" class="dropdown-option">
-                                    Check All
-                                </a>
-
-                                
-                                <% if(data2.length!=0) { var i=1; data2.forEach(function(data){ %>
-                                    <label class="dropdown-option">
-                                        <input type="checkbox" class="<%- i %>" name="dropdown-group" value=`Selection "${i}"` />
-                                        <%= data.job_name %>
-                                    </label>
-                                    <% i++; }) %>
-                                      <% } else{ %>
-                                       
-                                        <% } %>
-
-
-                            </div>
-                        </div>
-
+                    
+                    <div class="mb-3 form-components">
+                        <select class="form-select" name="vehicles" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                            <!-- Write a query to fetch the vehicle table and show the names -->
+                            <option selected="selected" disabled="disabled">Select your Job</option> 
+                             <% if(data2.length!=0) { var i=1; data2.forEach(function(data){ %>
+                                <option value=<% i %>><%= data.job_name %></option>
+                                <% i++; }) %>
+                                  <% } else{ %>
+                                   
+                                    <% } %>                   
+                        </select>
                     </div>
 
                     <div class="mb-3 urf-named license">
@@ -107,100 +88,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
         </script>
-
-    <script>
-        (function ($) {
-            var CheckboxDropdown = function (el) {
-                var _this = this;
-                this.isOpen = false;
-                this.areAllChecked = false;
-                this.$el = $(el);
-                this.$label = this.$el.find('.dropdown-label');
-                this.$checkAll = this.$el.find('[data-toggle="check-all"]').first();
-                this.$inputs = this.$el.find('[type="checkbox"]');
-
-                this.onCheckBox();
-
-                this.$label.on('click', function (e) {
-                    e.preventDefault();
-                    _this.toggleOpen();
-                });
-
-                this.$checkAll.on('click', function (e) {
-                    e.preventDefault();
-                    _this.onCheckAll();
-                });
-
-                this.$inputs.on('change', function (e) {
-                    _this.onCheckBox();
-                });
-            };
-
-            CheckboxDropdown.prototype.onCheckBox = function () {
-                this.updateStatus();
-            };
-
-            CheckboxDropdown.prototype.updateStatus = function () {
-                var checked = this.$el.find(':checked');
-
-                this.areAllChecked = false;
-                this.$checkAll.html('Check All');
-
-                if (checked.length <= 0) {
-                    this.$label.html('Full Service');
-                }
-                else if (checked.length === 1) {
-                    this.$label.html(checked.parent('label').text());
-                }
-                else if (checked.length === this.$inputs.length) {
-                    this.$label.html('All Selected');
-                    this.areAllChecked = true;
-                    this.$checkAll.html('Uncheck All');
-                }
-                else {
-                    this.$label.html(checked.length + ' Selected');
-                }
-            };
-
-            CheckboxDropdown.prototype.onCheckAll = function (checkAll) {
-                if (!this.areAllChecked || checkAll) {
-                    this.areAllChecked = true;
-                    this.$checkAll.html('Uncheck All');
-                    this.$inputs.prop('checked', true);
-                }
-                else {
-                    this.areAllChecked = false;
-                    this.$checkAll.html('Check All');
-                    this.$inputs.prop('checked', false);
-                }
-
-                this.updateStatus();
-            };
-
-            CheckboxDropdown.prototype.toggleOpen = function (forceOpen) {
-                var _this = this;
-
-                if (!this.isOpen || forceOpen) {
-                    this.isOpen = true;
-                    this.$el.addClass('on');
-                    $(document).on('click', function (e) {
-                        if (!$(e.target).closest('[data-control]').length) {
-                            _this.toggleOpen();
-                        }
-                    });
-                }
-                else {
-                    this.isOpen = false;
-                    this.$el.removeClass('on');
-                    $(document).off('click');
-                }
-            };
-
-            var checkboxesDropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
-            for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
-                new CheckboxDropdown(checkboxesDropdowns[i]);
-            }
-        })(jQuery);
-    </script>
 
 </html>
