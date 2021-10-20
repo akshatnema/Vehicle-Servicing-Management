@@ -16,61 +16,63 @@
 
 <%- include ("components/navbar.ejs") %>
 
-  <body class="db-body">
-    <div class="sections">
-      <section class="section1">
-        <h1 class="wlcome">
-          <span style="color: white;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
-        </h1>
+<body class="db-body">
+  <div class="sections">
+    <section class="section1">
+      <h1 class="wlcome">
+        <span style="color: white;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
+      </h1>
 
-        <div class="buttons">
-          <a type="button" href=<%- ("registerVehicle") %> class="btn btn-primary vehicleBtn"> Register your Vehicle</a>
-          <a type="button" href=<%- ("take-appointment") %> class="btn btn-danger appointmentBtn">Take an Appointment</a>
-          <a type="button" href=<%- ("feedback") %> class="btn btn-warning feedbackBtn" style="color: white;">Write a feedback</a>
+      <div class="buttons">
+        <a type="button" href=<%- ("/customer/registerVehicle") %> class="btn btn-primary vehicleBtn"> Register your
+          Vehicle</a>
+        <a type="button" href=<%- ("/customer/take-appointment") %> class="btn btn-danger appointmentBtn">Take an
+          Appointment</a>
+        <a type="button" href=<%- ("/customer/feedback") %> class="btn btn-warning feedbackBtn"
+          style="color: white;">Write a feedback</a>
 
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section2">
-       
-        <div class="user_image_d">
-          <img class="user-image" src="/images/dashboard/user.png">
-        </div>
+    <section class="section2">
 
-        <div class="name_of_user">
-          <%=userdata[0].name %> 
-        </div>
+      <div class="user_image_d">
+        <img class="user-image" src="/images/dashboard/user.png">
+      </div>
 
-        <div class="phone-details" style="display: flex;">
-          <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US">
-            <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
-            <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
-          </a>
-          <div class="phone-number"><%= userdata[0].mobile %> </div>
-        </div>
+      <div class="name_of_user">
+        <%=userdata[0].name %>
+      </div>
 
-        <div class="phone-details emails" style="display: flex;">
-          <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
-          <div class="phone-number"><%=userdata[0].email %> </div>
-        </div>
+      <div class="phone-details" style="display: flex;">
+        <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US">
+          <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
+          <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
+        </a>
+        <div class="phone-number"><%= userdata[0].mobile %> </div>
+      </div>
+
+      <div class="phone-details emails" style="display: flex;">
+        <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
+        <div class="phone-number"><%=userdata[0].email %> </div>
+      </div>
 
 
-        <div class="address phone-details" address style="display: flex;">
-          <a target="__blank" href="https://www.google.com/maps"> 
-            <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
-            <i class="fas fa-home fa-2x phone-call-img"></i> </a>
-          <div class="phone-number"><%=userdata[0].street %> <%=userdata[0].city %> <%=userdata[0].state %> </div>
-        </div>
-       
-      </section>
-    </div>
+      <div class="address phone-details" address style="display: flex;">
+        <a target="__blank" href="https://www.google.com/maps">
+          <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
+          <i class="fas fa-home fa-2x phone-call-img"></i> </a>
+        <div class="phone-number"><%=userdata[0].street %> <%=userdata[0].city %> <%=userdata[0].state %> </div>
+      </div>
 
-  </body>
-  <script>
+    </section>
+  </div>
 
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+</body>
+<script>
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 </html>
