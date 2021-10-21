@@ -33,24 +33,21 @@
                             <option selected="selected" disabled="disabled">Select your Vehicle</option> 
                             <!-- Write a query to fetch the vehicle table and show the names -->
                              <% if(data1.length!=0) { var i=1; data1.forEach(function(data){ %>
-                                <option value=<% i %>><%= data.model_name %></option>
+                                <option value=<%= data.chasis_no %>><%= data.model_name %></option>
                                 <% i++; }) %>
-                                  <% } else{ %>
-                                   <a href=<%- ("/registerVehicle")%>> <option value=<%- ("/registerVehicle") %> style="color:red;">  Please, First add your Vehicle</option></a>
-                                    <% } %>
+                                  <% } 
+                              %>
                         </select>
                     </div>
                     
                     <div class="mb-3 form-components">
-                        <select class="form-select" name="vehicles" aria-placeholder="Vehicle Type" aria-label="Default select example">
-                            <!-- Write a query to fetch the vehicle table and show the names -->
-                            <option selected="selected" disabled="disabled">Select your Job</option> 
+                        <select class="form-select" name="jobs" aria-placeholder="Vehicle Type" aria-label="Default select example">
+                           
+                            <option selected="selected" disabled="disabled">Select a Service</option> 
                              <% if(data2.length!=0) { var i=1; data2.forEach(function(data){ %>
-                                <option value=<% i %>><%= data.job_name %></option>
+                                <option value= <%= i %>><%= data.job_name %></option>
                                 <% i++; }) %>
-                                  <% } else{ %>
-                                   
-                                    <% } %>                   
+                                  <% } %>                   
                         </select>
                     </div>
 
@@ -63,13 +60,20 @@
                     <div class="date_of_appointment">
                         <input type="date" class="dates" name="date">
                     </div>
-
                     <div class="mb-3 urf-named">
                         <textarea class="form-control urf-namei urf-address" aria-label="address"
-                          name="address"  placeholder="Address"></textarea>
+                          name="address"  placeholder="Address Line 1"></textarea>
                     </div>
 
-
+                    <div class="form-row">
+                        <div class="form-group col-md-6 urf-named">
+                          <input type="text" name="city" class="form-control cities" placeholder="city" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-4 urf-named">
+                          <input type="text" name="state" class="form-control states" placeholder="state" id="inputCity">
+                        </div>
+                    </div>
+                    
                     <div class="mb-3 urf-named">
                         <textarea class="form-control urf-namei urf-address" aria-label="address"
                             placeholder="Other details you want to mention"></textarea>

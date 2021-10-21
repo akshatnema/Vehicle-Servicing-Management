@@ -41,7 +41,18 @@
   border: none;
   height: 2.4rem;
 }
+.form-row{
+  display: flex;
+
+}
+.cities{
+   margin:0 2rem 1rem 0;
+}
+.states{
+  width: 140%;
+  margin-left: 10%;
+}
 
 .urf-address{
-  height: 8rem;
+  height: 5rem;
 }
