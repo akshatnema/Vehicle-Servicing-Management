@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
 const bcrypt = require("bcrypt");
-
+const flash = require("connect-flash");
 var router = express.Router();
 
 function protectLogin(req, res, next) {
@@ -14,6 +14,7 @@ function protectLogin(req, res, next) {
     console.log("logged in as admin");
     res.redirect("/admin/dashboard");
   } else {
+    
     next();
   }
 }
@@ -40,7 +41,7 @@ router.get("/dashboard", protectLogin, (req, res) => {
       res.redirect("/customer/dashboard");
     }
     res.render("dashboard", {
-      userdata: data,
+      userdata: data, error: req.flash('error'), success:req.flash('success')
     });
   });
 });
@@ -54,7 +55,7 @@ router.post("/logout", (req, res) => {
 
 router.get("/feedback", protectLogin, (req, res) => {
   res.render("feedBack", {
-    userid: session.userID,
+    userid: session.userID, error: req.flash('error')
   });
 });
 
@@ -64,16 +65,18 @@ router.post("/feedback", (req, res) => {
   con.query(sql, (err, result) => {
     if (err) {
       console.log(err);
+      req.flash('error', 'Some error occured');
       res.redirect("/customer/feedback");
     } else {
       console.log("Feedback submitted");
+      req.flash('success', 'Feedback submitted successfully')
       res.redirect("/customer/dashboard");
     }
   });
 });
 
 router.get("/login", (req, res) => {
-  if (session.userType === "admin") {
+  if (session.userType === "admin") { 
     res.redirect("/admin/dashboard");
   } else if (session.userID) {
     res.redirect("/customer/dashboard");
@@ -93,6 +96,7 @@ router.post("/login", (req, res) => {
     }
     if (result.length === 0) {
       console.log("No credentials found");
+      req.flash('error','No credentials found');
       res.redirect("/");
     } else {
       console.log(result);
@@ -105,11 +109,13 @@ router.post("/login", (req, res) => {
         con.query(sql, (err, data, fields) => {
           if (err) {
             console.log("Something went wrong");
+            req.flash('Something went wrong')
             res.redirect("/register");
           }
           console.log(data);
           session.userID = data[0].id;
           session.userType = "customer";
+          req.flash('success','logged in as customer');
           res.redirect("/customer/dashboard");
         });
       }
@@ -152,6 +158,7 @@ router.post("/register", async function (req, res) {
         }
       }
     );
+    req.flash('success','registered successfully');
     res.redirect("/");
     var sql = `SELECT id FROM customer WHERE email = '${email}'`;
     con.query(sql, (err, data, fields) => {
