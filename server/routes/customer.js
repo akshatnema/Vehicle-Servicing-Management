@@ -236,6 +236,30 @@ router.get("/take-appointment",protectLogin, (req, res) => {
   });
 });
 
-router.post("/take-appointment", async function (req, res) {});
+router.post("/take-appointment",protectLogin, async function (req, res) {
+    
+  const {
+    vehicles,
+    jobs,
+    license,
+    date,
+    address,city,state
+  } = req.body;
+  userID=session.userID;
+    var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
+
+    con.query(sql,[userID,vehicles,date,address,city,state,jobs,license],(err,data,fields)=>{
+      if(err){
+        throw err;
+        res.redirect("/customer/take-appointment")
+      }
+      else{
+        console.log("Appointment done.");
+        res.redirect("/customer/dashboard")
+      } 
+
+  })
+
+});
 
 module.exports = router;

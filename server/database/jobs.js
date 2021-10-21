@@ -1,5 +1,11 @@
 const con = require('./sql_connect')
 
+var q = "INSERT IGNORE INTO job (job_id,job_name, price) VALUES ('0','Full Servicing','20000')"
+con.query(q, function (err) {
+    if (err) throw err;
+    // console.log("Data Inserted");
+});
+
 var q1 = "INSERT IGNORE INTO job (job_id,job_name, price) VALUES ('1','Replace Wheels / Wheel balancing','1000')"
 con.query(q1, function (err) {
     if (err) throw err;

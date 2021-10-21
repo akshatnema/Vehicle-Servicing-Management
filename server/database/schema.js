@@ -11,9 +11,9 @@ con.connect(function(err) {
   
 var customer ="CREATE TABLE IF NOT EXISTS customer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255),email VARCHAR(255),password VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255), mobile INT(10))"
 
-var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, customer_id INT NOT NULL,street VARCHAR(30) NOT NULL, city VARCHAR(30) NOT NULL, state VARCHAR(30) NOT NULL,job_id INT NOT NULL,license_no INT NOT NULL, FOREIGN KEY (customer_id) REFERENCES customer(id))"  
+var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, customer_id INT NOT NULL,chasis_no INT NOT NULL ,date DATE NOT NULL,street VARCHAR(30) NOT NULL, city VARCHAR(30) NOT NULL, state VARCHAR(30) NOT NULL,job_id INT NOT NULL,license_no INT NOT NULL, FOREIGN KEY (customer_id) REFERENCES customer(id),FOREIGN KEY (job_id) REFERENCES job(job_id),FOREIGN KEY (chasis_no) REFERENCES vehicle(chasis_no))"  
 
-var job_card_details="CREATE TABLE IF NOT EXISTS job_card_details(srno INT AUTO_INCREMENT PRIMARY KEY,card_id INT NOT NULL,job_id INT NOT NULL,price INT,Assign_dt DATE NOT NULL,Complete_dt DATE NOT NULL,Status BOOLEAN NOT NULL,Employee_id INT, FOREIGN KEY(card_id) REFERENCES job_card(card_id),FOREIGN KEY (Employee_id) REFERENCES employee(id), FOREIGN KEY (job_id) REFERENCES job(job_id))"
+var job_card_details="CREATE TABLE IF NOT EXISTS job_card_details(srno INT AUTO_INCREMENT PRIMARY KEY,card_id INT NOT NULL,job_id INT NOT NULL,chasis_no INT NOT NULL,price INT,Assign_dt DATE NOT NULL,Complete_dt DATE NOT NULL,Status BOOLEAN NOT NULL,Employee_id INT, FOREIGN KEY(card_id) REFERENCES job_card(card_id),FOREIGN KEY (Employee_id) REFERENCES employee(id), FOREIGN KEY (job_id) REFERENCES job(job_id),FOREIGN KEY (chasis_no) REFERENCES vehicle(chasis_no))"
 
 var job="CREATE TABLE IF NOT EXISTS job(job_id INT PRIMARY KEY,job_name VARCHAR(50) NOT NULL,price INT NOT NULL)"
 
@@ -28,16 +28,11 @@ con.query(customer, function (err) {
   console.log(" Customer Table created");
 });
 
-con.query(job_card, function (err) {
-  if (err) throw err;
-  console.log("Job Card Table created");
-});
-
-
 con.query(job, function (err) {
   if (err) throw err;
   console.log("Job Table created");
 });
+
 
 con.query(employee, function (err) {
   if (err) throw err;
@@ -48,11 +43,15 @@ con.query(feedback, function (err) {
   if (err) throw err;
   console.log("feedback Table created");
 });
+con.query(vehicle, function (err) {
+  if (err) throw err;
+  console.log("Vehicle Table created");
+});
 con.query(job_card_details, function (err) {
   if (err) throw err;
   console.log("Job Card Details Table created");
 });
-con.query(vehicle, function (err) {
+con.query(job_card, function (err) {
   if (err) throw err;
-  console.log("Vehicle Table created");
+  console.log("Job Card Table created");
 });
