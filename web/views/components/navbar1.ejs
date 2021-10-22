@@ -3,51 +3,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/navbar.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href=<%- ("/admin/dashboard") %>> iCars</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#" style="color:white">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  aria-expanded="false" style="color:white" href=<%- ("/admin/services") %>>  Services </a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link" href=<%- ("/admin/customerView") %> style="color:white">Customers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href=<%- ("/admin/employeeView") %> style="color:white">Employees</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" style="color:white">About Us</a>
-          </li>
-        </ul>
-        <!-- <a class="btn btn-outline-primary" href=<%- ("/admin/viewAppointment") %>>   View Appointments</a> -->
-        <form action="/customer/logout" method="post">
-        <button type="submit" class="btn btn-danger" id="logoutBtn" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href=<%- ("/admin/dashboard") %>> iCars</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="<%- ("/admin/dashboard") %> " style="color:white">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-expanded="false" style="color:white" href=<%- ("/admin/services") %>> Services </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=<%- ("/admin/customerView") %> style="color:white">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=<%- ("/admin/employeeView") %> style="color:white">Employees</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:white">About Us</a>
+        </li>
+      </ul>
+      <!-- <a class="btn btn-outline-primary" href=<%- ("/admin/viewAppointment") %>>   View Appointments</a> -->
+      <form action="/admin/logout" method="post">
+        <button type="submit" class="btn btn-danger" id="logoutBtn">
           Log Out
         </button>
       </form>
-      </div>
     </div>
-  </nav>
-  <script>
-    let logout=document.getElementById('logoutBtn');
-    logout.addEventListener('click',()=>{
-      localStorage.clear();
-      sessionStorage.clear();
-    })
-  </script>
+  </div>
+</nav>
+<script>
+  let logout = document.getElementById('logoutBtn');
+  logout.addEventListener('click', () => {
+    localStorage.clear();
+    sessionStorage.clear();
+  })
+</script>
