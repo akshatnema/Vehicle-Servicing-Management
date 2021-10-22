@@ -2,34 +2,34 @@ const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
 const bcrypt = require("bcrypt");
-var min=1;
-var max=5;
-
-
 var router = express.Router();
 
 function protectLogin(req, res, next) {
   if (!session.userID) {
     console.log("Login to continue");
-    console.log("login to continue");
+    req.flash('error','login to continue');
     return res.redirect("/");
   } else if (session.userType === "admin") {
     console.log("logged in as admin");
     res.redirect("/admin/dashboard");
   } else {
+    
     next();
   }
 }
 
 function already(email) {
   const q0 = `SELECT * FROM customer WHERE email="${email}";`;
+  console.log("go in");
   con.query(q0, (err, result) => {
     if (err) {
       throw err;
     }
     if (result.length === 0) {
+      console.log("not found");
       return "not found";
     } else {
+      console.log("found");
       return "found";
     }
   });
@@ -43,7 +43,7 @@ router.get("/dashboard", protectLogin, (req, res) => {
       res.redirect("/customer/dashboard");
     }
     res.render("dashboard", {
-      userdata: data,
+      userdata: data, error: req.flash('error'), success:req.flash('success')
     });
   });
 });
@@ -52,12 +52,13 @@ router.post("/logout", (req, res) => {
   console.log("logout successfully");
   session.userID = null;
   session.userType = null;
+  req.flash('success','logout successfully');
   res.redirect("/");
 });
 
 router.get("/feedback", protectLogin, (req, res) => {
   res.render("feedBack", {
-    userid: session.userID,
+    userid: session.userID, error: req.flash('error')
   });
 });
 
@@ -67,16 +68,18 @@ router.post("/feedback", (req, res) => {
   con.query(sql, (err, result) => {
     if (err) {
       console.log(err);
+      req.flash('error', 'Some error occured');
       res.redirect("/customer/feedback");
     } else {
       console.log("Feedback submitted");
+      req.flash('success', 'Feedback submitted successfully')
       res.redirect("/customer/dashboard");
     }
   });
 });
 
 router.get("/login", (req, res) => {
-  if (session.userType === "admin") {
+  if (session.userType === "admin") { 
     res.redirect("/admin/dashboard");
   } else if (session.userID) {
     res.redirect("/customer/dashboard");
@@ -96,6 +99,7 @@ router.post("/login", (req, res) => {
     }
     if (result.length === 0) {
       console.log("No credentials found");
+      req.flash('error','No credentials found');
       res.redirect("/");
     } else {
       console.log(result);
@@ -108,11 +112,12 @@ router.post("/login", (req, res) => {
         con.query(sql, (err, data, fields) => {
           if (err) {
             console.log("Something went wrong");
+            req.flash('error',err.sqlMessage)
             res.redirect("/register");
           }
-          console.log(data);
           session.userID = data[0].id;
           session.userType = "customer";
+          req.flash('success','logged in as customer');
           res.redirect("/customer/dashboard");
         });
       }
@@ -120,7 +125,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register",protectLogin, (req, res) => {
   if (!session.userID) {
     res.render("./register");
   } else if (session.userID === "admin") {
@@ -133,12 +138,12 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async function (req, res) {
   const { name, email, mobile, address, city, state, password } = req.body;
-  if (already(email) === "found") {
+  if (already(email) == "found") {
     console.log("This email is already registered");
+    req.flash('error', 'This email is already registered')
     res.redirect("/");
   } else {
     const hash = await bcrypt.hash(password, 5);
-    // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
 
     const query =
       "INSERT INTO customer (name,email,street,city,state,password,mobile) VALUES (?,?,?,?,?,?,?)";
@@ -149,12 +154,14 @@ router.post("/register", async function (req, res) {
         if (err) {
           console.log(err);
           console.log("Something went wrong");
+          req.flash('error', 'Something went wrong')
           res.redirect("/register");
         } else {
           console.log("success");
         }
       }
     );
+    req.flash('success','registered successfully');
     res.redirect("/");
     var sql = `SELECT id FROM customer WHERE email = '${email}'`;
     con.query(sql, (err, data, fields) => {
@@ -171,7 +178,7 @@ router.post("/register", async function (req, res) {
 });
 
 // // when user want to register vehicle
-router.get("/registerVehicle", function (req, res, next) {
+router.get("/registerVehicle",protectLogin, function (req, res, next) {
   res.render("registerVehicle", {
     title: "vehicles",
   });
@@ -197,10 +204,12 @@ router.post("/registerVehicle", async function (req, res) {
     (err, data, fields) => {
       if (err) {
         console.log(err);
-        res.redirect("dashboard");
+        req.flash('error', err.sqlMessage)
+        res.redirect("/customer/dashboard");
       } else {
         console.log("New Vehicle Added");
-        res.redirect("dashboard");
+        req.flash('success','New Vehicle Added')
+        res.redirect("/customer/dashboard");
       }
     }
   );
@@ -225,8 +234,6 @@ router.get("/take-appointment",protectLogin, (req, res) => {
   var sql2 = "SELECT * FROM job";
   con.query(sql1, function (err, data1) {
     if (err) throw err;
-    //console.log(data1); //this should print
-
     con.query(sql2, function (err, data2) {
       if (err) throw err;
       //  console.log(data2);
@@ -250,14 +257,16 @@ router.post("/take-appointment",protectLogin, async function (req, res) {
   } = req.body;
   
   userID=session.userID;
-    var sql="INSERT INTO job_card(card_id,customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?,?)";
-    con.query(sql,[id,userID,vehicles,date,address,city,state,jobs,license],(err,data)=>{
+  var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
+
+    con.query(sql,[userID,vehicles,date,address,city,state,jobs,license],(err,data,fields)=>{
       if(err){
-        throw err;
+        console.log(err);
         res.redirect("/customer/take-appointment")
       }
       else{
         console.log("Appointment done.");
+        req.flash("success","Appointment done.")
         res.redirect("/customer/dashboard")
       } 
 

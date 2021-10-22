@@ -34,7 +34,7 @@ function already(email) {
 
 //Dashboard
 router.get("/dashboard", protectLogin, (req, res) => {
-  res.render("adminDashboard");
+  res.render("adminDashboard", {error: req.flash('error'), success: req.flash('success')});
 });
 
 //Login
@@ -45,9 +45,11 @@ router.post("/login", (req, res) => {
   if (aemail === admin && apass === password) {
     session.userType = "admin";
     session.userID = "10000";
+    req.flash('success','logged in successfully')
     res.redirect("/admin/dashboard");
   } else {
     console.log("Wrong Credentials");
+    req.flash('error','wrong credentials')
     res.redirect("/admin");
   }
 });
@@ -56,6 +58,7 @@ router.post("/logout", (req, res) => {
   console.log("logout successfully");
   session.userID = null;
   session.userType = null;
+  req.flash('success','logout successfully')
   res.redirect("/admin");
 });
 
@@ -73,7 +76,7 @@ router.get("/employeeView", protectLogin, function (req, res, next) {
 });
 
 router.get("/addUpdateEmployee", protectLogin, (req, res) => {
-  res.render("addUpdateEmployee");
+  res.render("addUpdateEmployee",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/addEmployee", async function (req, res) {
@@ -92,18 +95,20 @@ router.post("/addEmployee", async function (req, res) {
       if (err) {
         console.log(err);
         console.log("Something went wrong");
+        req.flash('error',err.message);
         res.redirect("/register");
       } else {
         console.log("successfully added Employee");
       }
     }
   );
+  req.flash('success','Successfully added Employee')
   res.redirect("/admin/addUpdateEmployee");
 });
 
 router.post("/updateEmployee", async function (req, res) {
   const { id, exampleRadios, correctedInfo } = req.body;
-  // console.log(correctedInfo)
+  let flag=0
   if (exampleRadios === "option1") {
     const query = "UPDATE employee SET name=? WHERE id=?";
     con.query(query, [correctedInfo, id], (err, result) => {
@@ -111,6 +116,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted name");
       }
     });
@@ -121,6 +127,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted post");
       }
     });
@@ -131,6 +138,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted eamil");
       }
     });
@@ -141,6 +149,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted contact no.");
       }
     });
@@ -151,6 +160,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted street");
       }
     });
@@ -161,6 +171,7 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted city");
       }
     });
@@ -171,28 +182,42 @@ router.post("/updateEmployee", async function (req, res) {
         console.log(err);
         console.log("Something went wrong");
       } else {
+        flag=1
         console.log("successfully inserted state");
       }
     });
+  }
+  if (!flag) {
+    req.flash('success','Successfully updated data');
+  }
+  else{
+    req.flash('error','Something went wrong');
   }
   res.redirect("/admin/addUpdateEmployee");
 });
 
 router.get("/deleteEmployee", protectLogin, (req, res) => {
-  res.render("deleteEmployee");
+  res.render("deleteEmployee",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/deleteEmployee", async function (req, res) {
   const { id, email } = req.body;
-  // DELETE FROM `employee` WHERE 0
+  let flag=0
   const query = "DELETE FROM employee WHERE id=? AND email=?";
   con.query(query, [id, email], (err, result) => {
     if (err) {
       console.log(err);
       console.log("Something went wrong");
     } else {
-      console.log("successfully deleted  Employee!");
+      flag=1
+      console.log("successfully deleted Employee!");
     }
+    if (flag) {
+      req.flash('success','Successfully deleted employee');
+    }
+    else{
+      req.flash('error','Something went wrong');
+    } 
     res.redirect("/admin/deleteEmployee");
   });
 });
@@ -211,18 +236,17 @@ router.get("/customerView", protectLogin, function (req, res, next) {
 });
 
 router.get("/addUpdateCustomer", protectLogin, (req, res) => {
-  res.render("addUpdateCustomer");
+  res.render("addUpdateCustomer",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/addCustomer", async function (req, res) {
   const { name, email, password, street, city, state, mobile } = req.body;
+  let flag=0
   if (already(email) === "found") {
     console.log("This email is already registered");
     res.redirect("/admin/addUpdateCustomer");
   } else {
     const hash = await bcrypt.hash(password, 5);
-    // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
-
     const query =
       "INSERT INTO customer (name,email,password,street,city,state,mobile) VALUES (?,?,?,?,?,?,?)";
     con.query(
@@ -233,10 +257,18 @@ router.post("/addCustomer", async function (req, res) {
           console.log(err);
           console.log("Something went wrong");
         } else {
+          flag=1
           console.log("successfully admin has added Customer");
         }
       }
     );
+    console.log(flag);
+    if(!flag){
+      req.flash('success','successfully admin has added Customer')
+    }
+    else{
+      req.flash('error','Something went wrong')
+    }
     res.redirect("/admin/addUpdateCustomer");
   }
 });
@@ -309,20 +341,26 @@ router.post("/updateCustomer", async function (req, res) {
 });
 
 router.get("/deleteCustomer", protectLogin, (req, res) => {
-  res.render("deleteCustomer");
+  res.render("deleteCustomer",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/deleteCustomer", async function (req, res) {
   const { id, email } = req.body;
   // DELETE FROM `employee` WHERE 0
+  let flag=0
   const query = "DELETE FROM customer WHERE id=? AND email=?";
   con.query(query, [id, email], (err, result) => {
     if (err) {
       console.log(err);
       console.log("Something went wrong");
     } else {
+      flag=1
       console.log("successfully deleted Customer!");
     }
+    if(flag)
+     req.flash('success','Successfully deleted customer')
+    else
+     req.flash('error','Something went wrong')
     res.redirect("/admin/deleteCustomer");
   });
 });
@@ -334,9 +372,7 @@ router.get("/feedbackView", protectLogin, function (req, res, next) {
   con.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render("feedbackView", {
-      title: "Feedbacks",
-      userData: data,
-    });
+      title: "Feedbacks",userData: data});
   });
 });
 
