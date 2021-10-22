@@ -76,7 +76,7 @@ router.get("/employeeView", protectLogin, function (req, res, next) {
 });
 
 router.get("/addUpdateEmployee", protectLogin, (req, res) => {
-  res.render("addUpdateEmployee");
+  res.render("addUpdateEmployee",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/addEmployee", async function (req, res) {
@@ -187,7 +187,7 @@ router.post("/updateEmployee", async function (req, res) {
       }
     });
   }
-  if (flag) {
+  if (!flag) {
     req.flash('success','Successfully updated data');
   }
   else{
@@ -241,13 +241,12 @@ router.get("/addUpdateCustomer", protectLogin, (req, res) => {
 
 router.post("/addCustomer", async function (req, res) {
   const { name, email, password, street, city, state, mobile } = req.body;
-  var flag=0
+  let flag=0
   if (already(email) === "found") {
     console.log("This email is already registered");
     res.redirect("/admin/addUpdateCustomer");
   } else {
     const hash = await bcrypt.hash(password, 5);
-    // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
     const query =
       "INSERT INTO customer (name,email,password,street,city,state,mobile) VALUES (?,?,?,?,?,?,?)";
     con.query(
@@ -264,7 +263,7 @@ router.post("/addCustomer", async function (req, res) {
       }
     );
     console.log(flag);
-    if(flag){
+    if(!flag){
       req.flash('success','successfully admin has added Customer')
     }
     else{
@@ -342,20 +341,26 @@ router.post("/updateCustomer", async function (req, res) {
 });
 
 router.get("/deleteCustomer", protectLogin, (req, res) => {
-  res.render("deleteCustomer");
+  res.render("deleteCustomer",{error:req.flash('error'),success:req.flash('success')});
 });
 
 router.post("/deleteCustomer", async function (req, res) {
   const { id, email } = req.body;
   // DELETE FROM `employee` WHERE 0
+  let flag=0
   const query = "DELETE FROM customer WHERE id=? AND email=?";
   con.query(query, [id, email], (err, result) => {
     if (err) {
       console.log(err);
       console.log("Something went wrong");
     } else {
+      flag=1
       console.log("successfully deleted Customer!");
     }
+    if(flag)
+     req.flash('success','Successfully deleted customer')
+    else
+     req.flash('error','Something went wrong')
     res.redirect("/admin/deleteCustomer");
   });
 });
@@ -367,9 +372,7 @@ router.get("/feedbackView", protectLogin, function (req, res, next) {
   con.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render("feedbackView", {
-      title: "Feedbacks",
-      userData: data,
-    });
+      title: "Feedbacks",userData: data});
   });
 });
 
