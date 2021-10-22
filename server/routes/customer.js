@@ -257,7 +257,7 @@ router.post("/take-appointment",protectLogin, async function (req, res) {
   } = req.body;
   
   userID=session.userID;
-  var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
+  // var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
 
     con.query(sql,[userID,vehicles,date,address,city,state,jobs,license],(err,data,fields)=>{
       if(err){

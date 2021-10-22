@@ -354,13 +354,18 @@ router.post("/deleteCustomer", async function (req, res) {
       console.log(err);
       console.log("Something went wrong");
     } else {
-      flag=1
-      console.log("successfully deleted Customer!");
+      console.log(result);
+      if(result.affectedRows!=0){flag=1;
+      console.log("successfully deleted Customer!");}
+      else
+      {
+        flag=0;
+      }
     }
     if(flag)
      req.flash('success','Successfully deleted customer')
     else
-     req.flash('error','Something went wrong')
+     req.flash('error','You Entered Wrong credentials')
     res.redirect("/admin/deleteCustomer");
   });
 });
