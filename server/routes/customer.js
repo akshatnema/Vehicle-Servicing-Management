@@ -225,9 +225,84 @@ router.get('/take-appointment',(req, res) => {
 
 
 router.post('/take-appointment',async function(req,res){
-  
+  const userID=session.userID;
+   console.log(`"${userID}"`)
 
 })
+
+router.get('/updateProfile', function(req, res, next) {
+  res.render('updateCustomerProfile');
+});
+
+router.post('/updateProfile',async function(req, res) {
+  const id=session.userID;
+  console.log(id);
+  const { exampleRadios,correctedInfo } = req.body
+  // console.log(correctedInfo)
+  
+  if(exampleRadios==='option1'){
+    const query ="UPDATE customer SET email=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted email');
+       }
+    })
+  }
+  else if(exampleRadios==='option2'){
+    const query ="UPDATE customer SET street=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted street');
+       }
+    })
+  }
+  else if(exampleRadios==='option3'){
+    const query ="UPDATE customer SET city=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted city');
+       }
+    })
+  }
+  else if(exampleRadios==='option4'){
+    const query ="UPDATE customer SET state=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted state');
+       }
+    })
+  }
+  else if(exampleRadios==='option5'){
+    const query ="UPDATE customer SET mobile=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted mobile');
+       }
+    })
+  }
+  res.redirect('/customer/updateProfile')
+})
+
 
 
 
