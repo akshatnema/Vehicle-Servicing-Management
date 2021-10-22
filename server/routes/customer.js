@@ -231,7 +231,7 @@ router.post('/take-appointment',async function(req,res){
 })
 
 router.get('/updateProfile', function(req, res, next) {
-  res.render('updateCustomerProfile');
+  res.render('Profile');
 });
 
 router.post('/updateProfile',async function(req, res) {
