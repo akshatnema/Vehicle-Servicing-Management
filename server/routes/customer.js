@@ -257,6 +257,11 @@ router.post('/take-appointment',async function(req,res){
         res.redirect("/customer/dashboard")
       } 
     });
+});
+
+
+
+
 router.get('/updateProfile', function(req, res, next) {
   res.render('Profile');
 });
@@ -328,7 +333,6 @@ router.post('/updateProfile',async function(req, res) {
     })
   }
   res.redirect('/customer/updateProfile')
-});
 });
 
 module.exports=router;
