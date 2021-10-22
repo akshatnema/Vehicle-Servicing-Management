@@ -32,7 +32,7 @@ function already(email) {
   });
 }
 
-//Dasboard
+//Dashboard
 router.get("/dashboard", protectLogin, (req, res) => {
   res.render("adminDashboard", {error: req.flash('error'), success: req.flash('success')});
 });
@@ -354,13 +354,18 @@ router.post("/deleteCustomer", async function (req, res) {
       console.log(err);
       console.log("Something went wrong");
     } else {
-      flag=1
-      console.log("successfully deleted Customer!");
+      console.log(result);
+      if(result.affectedRows!=0){flag=1;
+      console.log("successfully deleted Customer!");}
+      else
+      {
+        flag=0;
+      }
     }
     if(flag)
      req.flash('success','Successfully deleted customer')
     else
-     req.flash('error','Something went wrong')
+     req.flash('error','You Entered Wrong credentials')
     res.redirect("/admin/deleteCustomer");
   });
 });
@@ -376,6 +381,8 @@ router.get("/feedbackView", protectLogin, function (req, res, next) {
   });
 });
 
+
+// navbar buttons
 router.get("/services", protectLogin, function (req, res, next) {
   var sql = "SELECT * FROM job";
   const userID = "admin@gmail.com";
@@ -388,5 +395,25 @@ router.get("/services", protectLogin, function (req, res, next) {
     });
   });
 });
+
+
+// Appointment Section
+router.get("/viewAppointments",protectLogin,(req,res,next)=>{
+    
+  var sql="SELECT * FROM job_card";
+
+  con.query(sql,(err,data)=>{
+    if(err)throw err;
+    else{
+      res.render("viewAppointment",{apps:data});
+    }
+  })
+
+})
+router.get("/assign",protectLogin,(req,res,next)=>{
+    
+      res.render("assignAppointment");
+})
+
 
 module.exports = router;
