@@ -32,7 +32,7 @@ function already(email) {
   });
 }
 
-//Dasboard
+//Dashboard
 router.get("/dashboard", protectLogin, (req, res) => {
   res.render("adminDashboard");
 });
@@ -340,6 +340,8 @@ router.get("/feedbackView", protectLogin, function (req, res, next) {
   });
 });
 
+
+// navbar buttons
 router.get("/services", protectLogin, function (req, res, next) {
   var sql = "SELECT * FROM job";
   const userID = "admin@gmail.com";
@@ -352,5 +354,25 @@ router.get("/services", protectLogin, function (req, res, next) {
     });
   });
 });
+
+
+// Appointment Section
+router.get("/viewAppointments",protectLogin,(req,res,next)=>{
+    
+  var sql="SELECT * FROM job_card";
+
+  con.query(sql,(err,data)=>{
+    if(err)throw err;
+    else{
+      res.render("viewAppointment",{apps:data});
+    }
+  })
+
+})
+router.get("/assign",protectLogin,(req,res,next)=>{
+    
+      res.render("assignAppointment");
+})
+
 
 module.exports = router;

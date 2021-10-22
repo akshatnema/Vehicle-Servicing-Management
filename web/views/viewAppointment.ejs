@@ -1,5 +1,3 @@
-<!-- const con = require('./sql_connect'); -->
-
 <!doctype html>
 <html lang="en">
 
@@ -36,16 +34,16 @@
         </thead>
         <tbody>
 
-          <% if(userData.length!=0) { var i=1; userData.forEach(function(data){ %>
+          <% if(apps.length!=0) { var i=1; apps.forEach(function(data){ %>
             <tr>
               <th scope="row">
-                <%=data.srno %>
+                <%=data.card_id%>
               </th>
               <td style="width: 75%;text-align: center;">
-                <%=data.job_name %>
+                <%=data.job_id %>
               </td>
               <td>
-                <%=data.price %>
+                <%=data.date %>
               </td>
             </tr>
             <% i++; }) %>

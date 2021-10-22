@@ -2,6 +2,9 @@ const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
 const bcrypt = require("bcrypt");
+var min=1;
+var max=5;
+
 
 var router = express.Router();
 
@@ -245,10 +248,10 @@ router.post("/take-appointment",protectLogin, async function (req, res) {
     date,
     address,city,state
   } = req.body;
+  
   userID=session.userID;
-    var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
-
-    con.query(sql,[userID,vehicles,date,address,city,state,jobs,license],(err,data,fields)=>{
+    var sql="INSERT INTO job_card(card_id,customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?,?)";
+    con.query(sql,[id,userID,vehicles,date,address,city,state,jobs,license],(err,data)=>{
       if(err){
         throw err;
         res.redirect("/customer/take-appointment")
