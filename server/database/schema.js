@@ -47,11 +47,12 @@ con.query(vehicle, function (err) {
   if (err) throw err;
   console.log("Vehicle Table created");
 });
-con.query(job_card_details, function (err) {
-  if (err) throw err;
-  console.log("Job Card Details Table created");
-});
+
 con.query(job_card, function (err) {
   if (err) throw err;
   console.log("Job Card Table created");
+});
+con.query(job_card_details, function (err) {
+  if (err) throw err;
+  console.log("Job Card Details Table created");
 });

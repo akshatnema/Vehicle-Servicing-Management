@@ -2,13 +2,12 @@ const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
 const bcrypt = require("bcrypt");
-const flash = require("connect-flash");
 var router = express.Router();
 
 function protectLogin(req, res, next) {
   if (!session.userID) {
     console.log("Login to continue");
-    console.log("login to continue");
+    req.flash('error','login to continue');
     return res.redirect("/");
   } else if (session.userType === "admin") {
     console.log("logged in as admin");
@@ -21,13 +20,16 @@ function protectLogin(req, res, next) {
 
 function already(email) {
   const q0 = `SELECT * FROM customer WHERE email="${email}";`;
+  console.log("go in");
   con.query(q0, (err, result) => {
     if (err) {
       throw err;
     }
     if (result.length === 0) {
+      console.log("not found");
       return "not found";
     } else {
+      console.log("found");
       return "found";
     }
   });
@@ -50,6 +52,7 @@ router.post("/logout", (req, res) => {
   console.log("logout successfully");
   session.userID = null;
   session.userType = null;
+  req.flash('success','logout successfully');
   res.redirect("/");
 });
 
@@ -109,10 +112,9 @@ router.post("/login", (req, res) => {
         con.query(sql, (err, data, fields) => {
           if (err) {
             console.log("Something went wrong");
-            req.flash('Something went wrong')
+            req.flash('error',err.sqlMessage)
             res.redirect("/register");
           }
-          console.log(data);
           session.userID = data[0].id;
           session.userType = "customer";
           req.flash('success','logged in as customer');
@@ -123,7 +125,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register",protectLogin, (req, res) => {
   if (!session.userID) {
     res.render("./register");
   } else if (session.userID === "admin") {
@@ -136,12 +138,12 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async function (req, res) {
   const { name, email, mobile, address, city, state, password } = req.body;
-  if (already(email) === "found") {
+  if (already(email) == "found") {
     console.log("This email is already registered");
+    req.flash('error', 'This email is already registered')
     res.redirect("/");
   } else {
     const hash = await bcrypt.hash(password, 5);
-    // const query=`INSERT INTO customer (id,name,email,mobile,street,city,state,password) VALUES ('${id}','${name}','${email}','${mobile}','${address}','${city}','${state}','${hash}')`
 
     const query =
       "INSERT INTO customer (name,email,street,city,state,password,mobile) VALUES (?,?,?,?,?,?,?)";
@@ -152,6 +154,7 @@ router.post("/register", async function (req, res) {
         if (err) {
           console.log(err);
           console.log("Something went wrong");
+          req.flash('error', 'Something went wrong')
           res.redirect("/register");
         } else {
           console.log("success");
@@ -175,7 +178,7 @@ router.post("/register", async function (req, res) {
 });
 
 // // when user want to register vehicle
-router.get("/registerVehicle", function (req, res, next) {
+router.get("/registerVehicle",protectLogin, function (req, res, next) {
   res.render("registerVehicle", {
     title: "vehicles",
   });
@@ -201,10 +204,12 @@ router.post("/registerVehicle", async function (req, res) {
     (err, data, fields) => {
       if (err) {
         console.log(err);
-        res.redirect("dashboard");
+        req.flash('error', err.sqlMessage)
+        res.redirect("/customer/dashboard");
       } else {
         console.log("New Vehicle Added");
-        res.redirect("dashboard");
+        req.flash('success','New Vehicle Added')
+        res.redirect("/customer/dashboard");
       }
     }
   );
@@ -229,8 +234,6 @@ router.get("/take-appointment",protectLogin, (req, res) => {
   var sql2 = "SELECT * FROM job";
   con.query(sql1, function (err, data1) {
     if (err) throw err;
-    //console.log(data1); //this should print
-
     con.query(sql2, function (err, data2) {
       if (err) throw err;
       //  console.log(data2);
@@ -243,17 +246,26 @@ router.get("/take-appointment",protectLogin, (req, res) => {
   });
 });
 
-router.post('/take-appointment',async function(req,res){
-  const userID=session.userID;
-   console.log(`"${userID}"`)
+router.post("/take-appointment",protectLogin, async function (req, res) {
+    
+  const {
+    vehicles,
+    jobs,
+    license,
+    date,
+    address,city,state
+  } = req.body;
+  userID=session.userID;
+  var sql="INSERT INTO job_card(customer_id,chasis_no,date,street,city,state,job_id,license_no) VALUES(?,?,?,?,?,?,?,?)";
 
     con.query(sql,[userID,vehicles,date,address,city,state,jobs,license],(err,data,fields)=>{
       if(err){
-        throw err;
+        console.log(err);
         res.redirect("/customer/take-appointment")
       }
       else{
         console.log("Appointment done.");
+        req.flash("success","Appointment done.")
         res.redirect("/customer/dashboard")
       } 
     });
