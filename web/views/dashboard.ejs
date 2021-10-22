@@ -37,69 +37,75 @@
 
 <%- include ("components/navbar.ejs") %>
 
-  <body class="db-body">
-    <% if(error && error.length){ %> 
-      <div id="db-body" class="alert alert-danger d-flex flex-row justify-content-between align-items-center myAlert-bottom">
-        <div class="d-flex flex-row justify-content-between align-items-center">
-          <i class="fas fa-check-square" style="color:white;margin-right: 10px;"></i>
-          <%= error %>
-        </div>
-        <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:white;"></i></a>
+<body class="db-body"> 
+  <% if(error && error.length){ %> 
+  <div id="db-body" class="alert alert-danger d-flex flex-row justify-content-between align-items-center myAlert-bottom">
+    <div class="d-flex flex-row justify-content-between align-items-center">
+      <i class="far fa-times-circle" style="color:black;margin-right: 10px;"></i>
+      <%= error %>
+    </div>
+    <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:black;"></i></a>
+  </div>
+  <% }else if(success.length){ %>
+    <div id="db-body" class="alert alert-success d-flex flex-row justify-content-between align-items-center myAlert-bottom">
+      <div class="d-flex flex-row justify-content-between align-items-center">
+        <i class="fas fa-check-square" style="color:black;margin-right: 10px;"></i>
+        <%= success %>
       </div>
-      <% }else if(success.length){ %>
-        <div id="db-body" class="alert alert-success d-flex flex-row justify-content-between align-items-center myAlert-bottom">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <i class="fas fa-check-square" style="color:white;margin-right: 10px;"></i>
-            <%= success %>
-          </div>
-          <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:white;"></i></a>
-        </div>
-        <% } %>
-    <div class="sections">
-      <section class="section1">
-        <h1 class="wlcome">
-          <span style="color: white;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
-        </h1>
+      <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:black;"></i></a>
+    </div>
+    <% } %>
+    
+  <div class="sections">
+    <section class="section1">
+      <h1 class="wlcome">
+        <span style="color: white;">Hi</span><img src="/images/waving-hand.png" class="wlcm-hand">, Welcome
+      </h1>
 
-        <div class="buttons">
-          <a type="button" href=<%- ("registerVehicle") %> class="btn btn-primary vehicleBtn"> Register your Vehicle</a>
-          <a type="button" href=<%- ("take-appointment") %> class="btn btn-danger appointmentBtn">Take an Appointment</a>
-          <a type="button" href=<%- ("feedback") %> class="btn btn-warning feedbackBtn" style="color: white;">Write a feedback</a>
-        </div>
-      </section>
+      <div class="buttons">
+        <a type="button" href=<%- ("/customer/registerVehicle") %> class="btn btn-primary vehicleBtn"> Register your
+          Vehicle</a>
+        <a type="button" href=<%- ("/customer/take-appointment") %> class="btn btn-danger appointmentBtn">Take an
+          Appointment</a>
+        <a type="button" href=<%- ("/customer/feedback") %> class="btn btn-warning feedbackBtn"
+          style="color: white;">Write a feedback</a>
 
-      <section class="section2">
-       
-        <div class="user_image_d">
-          <img class="user-image" src="/images/dashboard/user.png">
-        </div>
+      </div>
+    </section>
 
-        <div class="name_of_user">
-          <%=userdata[0].name %> 
-        </div>
+    <section class="section2">
 
-        <div class="phone-details" style="display: flex;">
-          <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US">
-            <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
-            <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
-          </a>
-          <div class="phone-number"><%= userdata[0].mobile %> </div>
-        </div>
+      <div class="user_image_d">
+        <img class="user-image" src="/images/dashboard/user.png">
+      </div>
 
-        <div class="phone-details emails" style="display: flex;">
-          <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
-          <div class="phone-number"><%=userdata[0].email %> </div>
-        </div>
+      <div class="name_of_user">
+        <%=userdata[0].name %>
+      </div>
+
+      <div class="phone-details" style="display: flex;">
+        <a target="__blank" href="https://play.google.com/store/apps/details?id=com.simpler.dialer&hl=en_IN&gl=US">
+          <!-- <img src="./images/dashboard/phone-call.png" class="phone-call-img" alt="">  -->
+          <i class="fas fa-phone-alt fa-2x phone-call-img"></i>
+        </a>
+        <div class="phone-number"><%= userdata[0].mobile %> </div>
+      </div>
+
+      <div class="phone-details emails" style="display: flex;">
+        <a target="__blank" href="https://gmail.com"><i class="fas fa-envelope fa-2x phone-call-img"></i></a>
+        <div class="phone-number"><%=userdata[0].email %> </div>
+      </div>
 
 
-        <div class="address phone-details" address style="display: flex;">
-          <a target="__blank" href="https://www.google.com/maps"> 
-            <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
-            <i class="fas fa-home fa-2x phone-call-img"></i> </a>
-          <div class="phone-number"><%=userdata[0].street %> <%=userdata[0].city %> <%=userdata[0].state %> </div>
-        </div>
-       
-      </section>
+      <div class="address phone-details" address style="display: flex;">
+        <a target="__blank" href="https://www.google.com/maps">
+          <!-- <img src="./images/dashboard/house.png" class="phone-call-img" alt=""> </a> -->
+          <i class="fas fa-home fa-2x phone-call-img"></i> </a>
+        <div class="phone-number"><%=userdata[0].street %> <%=userdata[0].city %> <%=userdata[0].state %> </div>
+      </div>
+
+    </section>
+  </div>
 
 </body>
 <script>
