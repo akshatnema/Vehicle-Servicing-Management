@@ -8,10 +8,47 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="./css/login-register.css" />
-
+    <style> 
+      .myAlert-top{
+        position: fixed;
+        top: 5px; 
+        left:37%;
+        width: 26%;
+        z-index: 10000000;
+    }
+    
+    .myAlert-bottom{
+        position: fixed;
+        top: 5px;
+        left:37%;
+        width: 26%;
+        z-index: 10000000;
+    }
+    
+    .alert-hid{
+       display:none !important;
+    }
+      </style>
 </head>
 
 <body class="login-admin-body">
+  <% if(error && error.length){ %> 
+    <div id="db-body" class="alert alert-danger d-flex flex-row justify-content-between align-items-center myAlert-bottom">
+      <div class="d-flex flex-row justify-content-between align-items-center">
+        <i class="fas fa-check-square" style="color:white;margin-right: 10px;"></i>
+        <%= error %>
+      </div>
+      <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:white;"></i></a>
+    </div>
+    <% }else if(success.length){ %>
+      <div id="db-body" class="alert alert-success d-flex flex-row justify-content-between align-items-center myAlert-bottom">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+          <i class="fas fa-check-square" style="color:white;margin-right: 10px;"></i>
+          <%= success %>
+        </div>
+        <a href="#" class="close mb-1" data-dismiss="alert" aria-label="close" onclick="myAlert()"><i class="fas fa-times" style="color:white;"></i></a>
+      </div>
+      <% } %>
   <center>
     <div class="admin-form">
       <form class="login-form" action="/admin/login" method="post">
@@ -35,5 +72,15 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script>
+    var aler =document.getElementById('db-body')
+    function myAlert(){
+      console.log("Closed");
+      aler.className+=' alert-hid';
+    }
+    setTimeout(function(){
+      aler.className+=' alert-hid';
+    }, 3000)
+  </script>
 </html>
