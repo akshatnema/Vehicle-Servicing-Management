@@ -10,7 +10,7 @@
 <%- include ("./components/navbar.ejs") %>
 <body class="UR-body">
     <header>
-        <h2>Update Profile</h2>
+        <h2>Update Your Profile</h2>
     </header>
     <div class="container" style="display:flex;">
         <div class="delete-form" style="margin: auto;">
@@ -58,6 +58,59 @@
         </div>
 
       </div>
+      
+      <header>
+        <h2>Your Appointment Catalog</h2>
+    </header>
+    <div class="tableDiv">
+     <center> <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">Service ID</th>
+            <th scope="col">Price</th>
+            <th scope="col">Service Start Date</th>
+            <th scope="col">Service Completion Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody style="color: white;">  
+
+          <% if(userData.length!=0) { var i=1; userData.forEach(function(data){ %>
+            <tr>
+              <th scope="row">
+                <%=i %>
+              </th>
+              <td>
+                <%=i %>
+              </td>
+              <td>
+                <%=data.jod_id %>
+              </td>
+              <td>
+                <%=data.price %>
+              </td>
+              <td>
+                <%=data.Assign_dt %>
+              </td>
+              <td>
+                <%=data.Complet_dt %>
+              </td>
+              <td>
+                <%=data.Status %>
+              </td>
+            </tr>
+            <% i++; }) %>
+              <% } else{ %>
+                <tr>
+                  <td colspan="7" style="color: white;">No Data Found</td>
+                </tr>
+                <% } %>
+
+        </tbody>
+      </table>
+    </center>
+    </div>
     
 </body>
  <!-- Option 1: Bootstrap Bundle with Popper -->

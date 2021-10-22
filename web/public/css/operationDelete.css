@@ -3,6 +3,7 @@ body{
     margin:0px auto;
     padding:0px auto;
     box-sizing: border-box;
+    color: white;
     font-family: 'Montserrat' !important;
 }
 
@@ -44,3 +45,13 @@ header{
     margin-top: 4rem;
     font-size: large;
 }
+
+.tableDiv {
+    align-self: center;
+    color: white;
+  }
+  .table {
+    color: white;
+    max-width: 90%;
+    text-align: center;
+  }

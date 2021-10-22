@@ -263,7 +263,16 @@ router.post('/take-appointment',async function(req,res){
 
 
 router.get('/updateProfile', function(req, res, next) {
-  res.render('Profile');
+  const id=session.userID;
+  console.log(id);
+  var sql = "SELECT * FROM job_card_details where card_id=?";
+  con.query(sql,[id],function (err, data, fields) {
+    if (err) throw err;
+    res.render("Profile", {
+      title: "Your Appointment Details",
+      userData: data,
+    });
+  });
 });
 
 router.post('/updateProfile',async function(req, res) {
