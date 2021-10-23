@@ -1,43 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-body{
+
+header{
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+}
+
+.UR-body{
+    background-color: black;
     margin:0px auto;
     padding:0px auto;
     box-sizing: border-box;
     font-family: 'Montserrat' !important;
 }
-
-header{
-    text-align: center;
-    margin-top: 1rem;
-    color: white;
-}
-
-.UR-body{
-    background-size: 50rem;
-    background-position-y: 15rem;
-    background-repeat: no-repeat;
-    background-color: black;
-    margin: auto;
-}
 .UR-form{
-    background-color:rgba(33, 151, 248, 0.3);
-    margin: 2rem 0 2rem 0; 
+    margin: 1rem 0 2rem 0; 
     padding: 2rem 2rem 1rem 2rem;
     width: 35rem;
     border-radius: 2rem;
-    text-align: center;
+    
 }
-
 
 .urf-namei{
     width: 25rem;
     height: 2.2rem;
-    margin:2rem 3rem;
+    margin:0rem 0rem;
 }
 
-.signupBtn{
-    margin-left:3.3rem;
+.urf-named{
+    margin:0 3rem 2rem 3rem ;
 }
+
 
 .delete-form{
     color: aliceblue;

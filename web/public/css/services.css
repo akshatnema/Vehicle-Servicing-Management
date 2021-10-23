@@ -7,13 +7,13 @@ body {
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
     * {
-      color: aliceblue;
+      color: rgb(249, 251, 253);
     }
 
     .heading {
       text-align: center;
       font-size: 6rem;
-      color: aliceblue;
+      color: rgb(249, 251, 253);
       margin-top: 1rem;
     }
 
@@ -24,3 +24,6 @@ body {
     .table {
       width: 50rem;
     } 
+    .tabs{
+      width: 80rem;
+    }

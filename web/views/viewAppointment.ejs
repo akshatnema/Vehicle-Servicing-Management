@@ -23,27 +23,43 @@
     <div class="heading">Appointments</div>
 
     <div class="tableDiv">
-     <center> <table class="table table-striped">
+     <center> <table class="table tabs table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col " style="width: 60%;text-align: center;">User-ID</th>
-            <th scope="col">Date</th>
-            <th scope="col">Assignee</th>
+            <th scope="col" style="width:10%;">#</th>
+            <th scope="col" style="width:10%;">Customer-id</th>
+            <th scope="col" style="width:15%;">Chasis_no</th>
+            <th scope="col" style="width:15%;">Assign_date</th>
+            <th scope="col" style="width:15%;">Job</th>
+            <th scope="col" style="width:10%;">Status</th>
+            <th scope="col" style="width:25%;text-align: center;">Assignee</th>
+            
           </tr>
         </thead>
         <tbody>
 
           <% if(apps.length!=0) { var i=1; apps.forEach(function(data){ %>
             <tr>
-              <th scope="row">
-                <%=data.card_id%>
+              <th scope="row" style="width:10%;">
+                <%= i %>
               </th>
-              <td style="width: 75%;text-align: center;">
-                <%=data.job_id %>
+              <td style="width: 10%;">
+                <%=data.customer_id %>
               </td>
-              <td>
-                <%=data.date %>
+              <td style="width:15%;">
+                <%=data.chasis_no%>
+              </td>
+              <td style="width:15%;" id="demo">
+                <%= data.date %>
+              </td>
+              <td style="width:15%;">
+                <%=data.job_name%>
+              </td>
+              <td style="width:10%;">
+                <%=data.Status%>
+              </td>
+              <td style="width:25%; text-align: center;">
+                <%= data.name %>
               </td>
             </tr>
             <% i++; }) %>
@@ -64,6 +80,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+    <script>
+      const d=document.getElementById('demo').innerHTML;
+      document.getElementById("demo").innerHTML = d.getDate()+ '/';
+      document.getElementById("demo").innerHTML += d.getMonth()+1+'/';
+      document.getElementById("demo").innerHTML += d.getFullYear();
+    </script>
 
 </html>
 

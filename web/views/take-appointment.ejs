@@ -27,7 +27,8 @@
 
                 <form class="UR-form" action="/customer/take-appointment" method="POST">
 
-                    <div class="mb-3 form-components">
+                    <div class="mb-3 form-components"> 
+                        <label for="formGroupExampleInput" style="margin-right:21rem;">Select Your Vehicle </label>
                         <select class="form-select" name="vehicles" aria-placeholder="Vehicle Type" aria-label="Default select example">
 
                             <option selected="selected" disabled="disabled">Select your Vehicle</option> 
@@ -41,35 +42,40 @@
                     </div>
                     
                     <div class="mb-3 form-components">
+                        <label for="formGroupExampleInput" style="margin-right:23.2rem;">Select services</label>
                         <select class="form-select" name="jobs" aria-placeholder="Vehicle Type" aria-label="Default select example">
                            
                             <option selected="selected" disabled="disabled">Select a Service</option> 
                              <% if(data2.length!=0) { var i=1; data2.forEach(function(data){ %>
-                                <option value= <%= i %>><%= data.job_name %></option>
+                                <option value= <%= i-1 %>><%= data.job_name %></option>
                                 <% i++; }) %>
                                   <% } %>                   
                         </select>
                     </div>
 
                     <div class="mb-3 urf-named license">
-                        <!-- <label for="formGroupExampleInput" class="form-label urf-name">Email</label> -->
+                        <label for="formGroupExampleInput" style="margin-right:25.5rem;">License No</label>
                         <input name="license" type="text" required class="form-control urf-namei"
                             id="formGroupExampleInput" placeholder="License No.">
                     </div>
 
                     <div class="date_of_appointment">
+                        <label for="formGroupExampleInput" style="margin-right:21.2rem;" >Appointment Date</label>
                         <input type="date" class="dates" name="date">
                     </div>
                     <div class="mb-3 urf-named">
+                        <label for="formGroupExampleInput" style="margin-right:26.5rem;" >Address</label>
                         <textarea class="form-control urf-namei urf-address" aria-label="address"
                           name="address"  placeholder="Address Line 1"></textarea>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6 urf-named">
+                         <label for="inputCity" style="margin-right:14rem;">City</label>
                           <input type="text" name="city" class="form-control cities" placeholder="city" id="inputCity">
                         </div>
                         <div class="form-group col-md-4 urf-named">
+                         <label for="inputState"style="margin-right:5.5rem;">State</label>
                           <input type="text" name="state" class="form-control states" placeholder="state" id="inputCity">
                         </div>
                     </div>

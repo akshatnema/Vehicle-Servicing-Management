@@ -13,7 +13,7 @@
 }
 .UR-form{
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 0rem;
     padding: 2rem 2rem 1rem 2rem;
     width: 35rem;
     border-radius:20px;
@@ -56,3 +56,55 @@
 .urf-address{
   height: 5rem;
 }
+
+
+
+// ****************************** CSS for Assign Appointment page *****************************
+header{
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+}
+.assign-body{
+  background-size: cover;
+  background-color: black;
+  color:white;
+  font-family: 'Montserrat' !important;
+  margin: auto;
+}
+
+.Assignform{
+  margin: 2rem 0 2rem 0; 
+  padding: 2rem 2rem 1rem 2rem;
+  width: 35rem;
+  border-radius: 2rem;
+}
+.inputClass{
+  width: 25rem;
+  height: 2.2rem;
+  margin:2rem 3rem;
+}
+
+.Assignlabels{
+  margin-left: 0;
+}
+.assignBtn{
+  text-align: center;
+}
+
+.assign-form{
+  color: aliceblue;
+  margin-top: 4rem;
+  font-size: large;
+}
+
+
+
+
+
+
+    
+    
+    
+
+    

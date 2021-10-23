@@ -399,17 +399,21 @@ router.get("/services", protectLogin, function (req, res, next) {
 
 // Appointment Section
 router.get("/viewAppointments",protectLogin,(req,res,next)=>{
-    
-  var sql="SELECT * FROM job_card";
 
-  con.query(sql,(err,data)=>{
+var sql=  `SELECT job_card.customer_id,job_card.chasis_no,job_card.date,job.job_name,job_card.Status, employee.name FROM job_card ,job, employee WHERE employee.id=job_card.Employee_id AND job.job_id=job_card.job_id`;
+
+
+  con.query(sql,async function(err,data){
     if(err)throw err;
     else{
       res.render("viewAppointment",{apps:data});
-    }
-  })
+     }    
+      });
+    
 
 })
+
+
 router.get("/assign",protectLogin,(req,res,next)=>{
     
       res.render("assignAppointment");
