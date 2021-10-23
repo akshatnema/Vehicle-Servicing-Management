@@ -278,7 +278,7 @@ router.post("/take-appointment",protectLogin, async function (req, res) {
 router.get('/updateProfile', function(req, res, next) {
   const id=session.userID;
   console.log(id);
-  var sql = "SELECT * FROM job_card_details where card_id=?";
+  var sql = "SELECT i.job_name as service_name, j.price, j.date as start_date, j.Complete_dt , j.Status, e.name AS Employee_name FROM job_card j, job i,employee e where j.customer_id=? AND j.Employee_id= e.id AND j.job_id=i.job_id;";
   con.query(sql,[id],function (err, data, fields) {
     if (err) throw err;
     res.render("Profile", {

@@ -67,37 +67,51 @@
         <thead>
           <tr>
             <th scope="col">Sr no.</th>
-            <th scope="col">Service ID</th>
+            <th scope="col">Service</th>
             <th scope="col">Price</th>
             <th scope="col">Service Start Date</th>
             <th scope="col">Service Completion Date</th>
             <th scope="col">Status</th>
+            <th scope="col">Employee Name</th>
+
           </tr>
         </thead>
         <tbody style="color: white;">  
 
           <% if(userData.length!=0) { var i=1; userData.forEach(function(data){ %>
             <tr>
-              <th scope="row">
+              <th scope="row" style="color: white;">
                 <%=i %>
               </th>
-              <td>
-                <%=i %>
+              <td style="color: white;">
+                <%=data.service_name %>
               </td>
-              <td>
-                <%=data.jod_id %>
-              </td>
-              <td>
+              <td style="color: white;">
                 <%=data.price %>
               </td>
-              <td>
-                <%=data.Assign_dt %>
+              <td id="start_date"style="color: white;">
               </td>
-              <td>
-                <%=data.Complet_dt %>
+              <script>
+                const sd = new Date("<%=data.start_date %>");
+                document.getElementById("start_date").innerHTML = sd.getDate()+ '/';
+                document.getElementById("start_date").innerHTML += sd.getMonth()+1+'/';
+                document.getElementById("start_date").innerHTML += sd.getFullYear();
+                </script>
+              <td id="complete_date" style="color: white;">
+                <!-- <%=data.Complete_dt %> -->
               </td>
-              <td>
+              <script>
+                const cd = new Date("<%=data.Complete_dt %>");
+                document.getElementById("complete_date").innerHTML = cd.getDate()+ '/';
+                document.getElementById("complete_date").innerHTML += cd.getMonth()+1+'/';
+                document.getElementById("complete_date").innerHTML += cd.getFullYear();
+                </script>
+
+              <td style="color: white;">
                 <%=data.Status %>
+              </td>
+              <td style="color: white;">
+                <%=data.Employee_name %>
               </td>
             </tr>
             <% i++; }) %>
@@ -115,4 +129,5 @@
 </body>
  <!-- Option 1: Bootstrap Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-</html>
+ 
+ </html>
