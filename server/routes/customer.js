@@ -292,7 +292,7 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
       })
     }
   });
-
+});
 router.get('/updateProfile', function(req, res, next) {
   const id=session.userID;
   console.log(id);
