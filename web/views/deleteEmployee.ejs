@@ -49,18 +49,20 @@
           <% } %>
         
     <header>
-        <h2>Delete Employee</h2>
+      <h1 style="font-size:5rem;">Delete Employee</h1>
     </header>
       <div class="container" style="display:flex;">
          <div class="delete-form" style="margin: auto;">
         <form class="UR-form" action="/admin/deleteEmployee" method="POST">
             <div class="mb-3 urf-named">
-                <input name="id" type="text" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Employee ID">
+              <label for="formGroupExampleInput">Employee ID</label>
+                <input name="id" type="text" required class="form-control urf-namei" id="formGroupExampleInput" placeholder=" ID">
              </div>
              <div class="mb-3 urf-named">
-                <input name="email" type="email" required class="form-control urf-namei" id="formGroupExampleInput" placeholder="Employee Email">
+                <label for="formGroupExampleInput">Employee Email</label>
+                <input name="email" type="email" required class="form-control urf-namei" id="formGroupExampleInput" placeholder=" Email">
              </div>
-            <button type="submit" class="btn btn-primary signupBtn" id='deleteBtn'>Delete</button>
+            <center><button type="submit" class="btn btn-danger signupBtn" id='deleteBtn'>Delete</button></center>
         </form>
        </div>
    
