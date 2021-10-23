@@ -417,6 +417,19 @@ var sql=  `SELECT job_card.customer_id,job_card.chasis_no,job_card.date,job.job_
 router.get("/assign",protectLogin,(req,res,next)=>{
     
       res.render("assignAppointment");
+});
+router.post("/assign",protectLogin,(req,res,next)=>{
+  const {id,emp,date}=req.body;
+
+  var sql=`UPDATE job_card SET Employee_id=${emp},Complete_dt=${date},Status=${1} WHERE card_id=${id}`;
+
+  con.query(sql,(err,results)=>{
+       if(err)throw err;
+       else
+       {
+         res.redirect("/admin/dashboard");
+       }
+  });
 })
 
 
