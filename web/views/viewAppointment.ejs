@@ -19,7 +19,7 @@
 
 <%- include ("./components/navbar1.ejs") %>
 
-  <body>
+  <body id="body">
     <div class="heading">Appointments</div>
 
     <div class="tableDiv">
@@ -49,9 +49,15 @@
               <td style="width:15%;">
                 <%=data.chasis_no%>
               </td>
-              <td style="width:15%;" id="demo">
-                <%= data.date %>
+              <td id="dates<%= i %>"style="width:15%;">
               </td>
+              <script>
+                const sd = new Date("<%=data.date%>");
+                document.getElementById("dates<%= i%>").innerHTML = sd.getDate()+ '/';
+                document.getElementById("dates<%= i%>").innerHTML += sd.getMonth()+1+'/';
+                document.getElementById("dates<%= i%>").innerHTML += sd.getFullYear();
+                </script>
+              
               <td style="width:15%;">
                 <%=data.job_name%>
               </td>
@@ -81,10 +87,10 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
     <script>
-      const d=document.getElementById('demo').innerHTML;
-      document.getElementById("demo").innerHTML = d.getDate()+ '/';
-      document.getElementById("demo").innerHTML += d.getMonth()+1+'/';
-      document.getElementById("demo").innerHTML += d.getFullYear();
+
+    
+     
+      
     </script>
 
 </html>

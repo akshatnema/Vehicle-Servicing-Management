@@ -22,13 +22,13 @@
         <h1 class="heading">
             Appointment Form
         </h1>
-        <center>
+       
             <div class="form">
 
                 <form class="UR-form" action="/customer/take-appointment" method="POST">
 
                     <div class="mb-3 form-components"> 
-                        <label for="formGroupExampleInput" style="margin-right:21rem;">Select Your Vehicle </label>
+                        <label for="formGroupExampleInput" style="text-align:left;">Select Your Vehicle </label>
                         <select class="form-select" name="vehicles" aria-placeholder="Vehicle Type" aria-label="Default select example">
 
                             <option selected="selected" disabled="disabled">Select your Vehicle</option> 
@@ -42,7 +42,7 @@
                     </div>
                     
                     <div class="mb-3 form-components">
-                        <label for="formGroupExampleInput" style="margin-right:23.2rem;">Select services</label>
+                        <label for="formGroupExampleInput" style="text-align:left;">Select services</label>
                         <select class="form-select" name="jobs" aria-placeholder="Vehicle Type" aria-label="Default select example">
                            
                             <option selected="selected" disabled="disabled">Select a Service</option> 
@@ -54,28 +54,28 @@
                     </div>
 
                     <div class="mb-3 urf-named license">
-                        <label for="formGroupExampleInput" style="margin-right:25.5rem;">License No</label>
+                        <label for="formGroupExampleInput" style="text-align:left;">License No</label>
                         <input name="license" type="text" required class="form-control urf-namei"
                             id="formGroupExampleInput" placeholder="License No.">
                     </div>
 
                     <div class="date_of_appointment">
-                        <label for="formGroupExampleInput" style="margin-right:21.2rem;" >Appointment Date</label>
+                        <label for="formGroupExampleInput" style="text-align:left;" >Appointment Date</label>
                         <input type="date" class="dates" name="date">
                     </div>
                     <div class="mb-3 urf-named">
-                        <label for="formGroupExampleInput" style="margin-right:26.5rem;" >Address</label>
+                        <label for="formGroupExampleInput" style="text-align: left;" >Address</label>
                         <textarea class="form-control urf-namei urf-address" aria-label="address"
                           name="address"  placeholder="Address Line 1"></textarea>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6 urf-named">
-                         <label for="inputCity" style="margin-right:14rem;">City</label>
+                         <label for="inputCity" style="text-align:left;">City</label>
                           <input type="text" name="city" class="form-control cities" placeholder="city" id="inputCity">
                         </div>
                         <div class="form-group col-md-4 urf-named">
-                         <label for="inputState"style="margin-right:5.5rem;">State</label>
+                         <label for="inputState"style="text-align:left; margin-left:1.2rem">State</label>
                           <input type="text" name="state" class="form-control states" placeholder="state" id="inputCity">
                         </div>
                     </div>
@@ -84,13 +84,13 @@
                         <textarea class="form-control urf-namei urf-address" aria-label="address"
                             placeholder="Other details you want to mention"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary signupBtn">Book</button>
+                    <center><button type="submit" class="btn btn-primary signupBtn">Book</button>
                     <div class="refer_back" style="margin-top:1rem"><a href="#"
-                            style="text-decoration: none;color:white;">T&C'S</a> </div>
+                            style="text-decoration: none;color:white;">T&C'S</a> </div></center>
                 </form>
 
             </div>
-        </center>
+    
 
 
     </body>
