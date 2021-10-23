@@ -293,6 +293,86 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
     }
   });
 
+router.get('/updateProfile', function(req, res, next) {
+  const id=session.userID;
+  console.log(id);
+  var sql = "SELECT i.job_name as service_name, j.price, j.date as start_date, j.Complete_dt , j.Status, e.name AS Employee_name FROM job_card j, job i,employee e where j.customer_id=? AND j.Employee_id= e.id AND j.job_id=i.job_id;";
+  con.query(sql,[id],function (err, data, fields) {
+    if (err) throw err;
+    res.render("Profile", {
+      title: "Your Appointment Details",
+      userData: data,
+    });
+  });
 });
 
-module.exports = router;
+router.post('/updateProfile',async function(req, res) {
+  const id=session.userID;
+  console.log(id);
+  const { exampleRadios,correctedInfo } = req.body
+  // console.log(correctedInfo)
+  
+  if(exampleRadios==='option1'){
+    const query ="UPDATE customer SET email=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted email');
+       }
+    })
+  }
+  else if(exampleRadios==='option2'){
+    const query ="UPDATE customer SET street=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted street');
+       }
+    })
+  }
+  else if(exampleRadios==='option3'){
+    const query ="UPDATE customer SET city=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted city');
+       }
+    })
+  }
+  else if(exampleRadios==='option4'){
+    const query ="UPDATE customer SET state=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted state');
+       }
+    })
+  }
+  else if(exampleRadios==='option5'){
+    const query ="UPDATE customer SET mobile=? WHERE id=?"
+    con.query(query,[correctedInfo,id], (err,result) =>{
+       if (err){
+           console.log(err);
+           console.log('Something went wrong')
+       } 
+       else {
+       console.log('successfully inserted mobile');
+       }
+    })
+  }
+  res.redirect('/customer/updateProfile')
+});
+
+module.exports=router;

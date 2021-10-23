@@ -36,3 +36,13 @@ body{
     margin-top: 4rem;
     font-size: large;
 }
+
+.tableDiv {
+    align-self: center;
+    color: white;
+  }
+  .table {
+    color: white;
+    max-width: 90%;
+    text-align: center;
+  }
