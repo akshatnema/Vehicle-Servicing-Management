@@ -6,13 +6,13 @@
     font-family: 'Montserrat' !important;
 }
 .heading{
-    margin: 3rem 0 0 0;
+    margin: 0rem 0 0 0;
     text-align:center;
     font-size: 6rem;
 }
 .UR-form{
+    margin: auto;
     background-color:rgba(7, 7, 7, 0.3);
-    margin: 2rem 0 2rem 0; 
     padding: 2rem 2rem 1rem 2rem;
     width: 35rem;
     border-radius: 2rem;

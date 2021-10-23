@@ -399,20 +399,37 @@ router.get("/services", protectLogin, function (req, res, next) {
 
 // Appointment Section
 router.get("/viewAppointments",protectLogin,(req,res,next)=>{
-    
-  var sql="SELECT * FROM job_card";
 
-  con.query(sql,(err,data)=>{
+var sql=  `SELECT job_card.customer_id,job_card.chasis_no,job_card.date,job.job_name,job_card.Status, employee.name FROM job_card ,job, employee WHERE employee.id=job_card.Employee_id AND job.job_id=job_card.job_id`;
+
+
+  con.query(sql,async function(err,data){
     if(err)throw err;
     else{
       res.render("viewAppointment",{apps:data});
-    }
-  })
+     }    
+      });
+    
 
 })
+
+
 router.get("/assign",protectLogin,(req,res,next)=>{
     
       res.render("assignAppointment");
+});
+router.post("/assign",protectLogin,(req,res,next)=>{
+  const {id,emp,date}=req.body;
+
+  var sql=`UPDATE job_card SET Employee_id=${emp},Complete_dt=${date},Status=${1} WHERE card_id=${id}`;
+
+  con.query(sql,(err,results)=>{
+       if(err)throw err;
+       else
+       {
+         res.redirect("/admin/dashboard");
+       }
+  });
 })
 
 

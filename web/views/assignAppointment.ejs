@@ -2,34 +2,78 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/css/services.css">
-  <style>
-   
-  </style>
-  <title>View Appointments</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet/less" type="text/css" href="/css/appointment.scss">
+    <script src="https://cdn.jsdelivr.net/npm/less@4.1.1"></script>
+    <title>Assign</title>
+    <style> 
+        .myAlert-top{
+          position: fixed;
+          top: 5px; 
+          left:37%;
+          width: 26%;
+          z-index: 10000000;
+      }
+      
+      .myAlert-bottom{
+          position: fixed;
+          top: 5px;
+          left:37%;
+          width: 26%;
+          z-index: 10000000;
+      }
+      
+      .alert-hid{
+         display:none !important;
+      }
+     </style>
 </head>
-
 <%- include ("./components/navbar1.ejs") %>
+
+<body class="assign-body">
+   <header>
+        <h1 style="font-size: 5rem;">Assign it....</h1>
+    </header>
+      <div class="container" style="display:flex;">
+         <div class="assign-form" style="margin: auto;">
+        <form class="Assignform" action="/admin/assign" method="POST">
+            <div class="mb-3 Assign_Div">
+                <label for="formGroupExampleInput" class="Assignlabels">Card id</label>
+                <input name="id" type="text" required class="form-control inputsClass" id="formGroupExampleInput" placeholder="Card ID ">
+             </div>
+             <div class="mb-3 Assign_Div">
+                <label for="formGroupExampleInput" class="Assignlabels">Employee id</label>
+                <input name="emp" type="text" required class="form-control inputsClass" id="formGroupExampleInput" placeholder=" Employee ID">
+             </div>
+             <div class="mb-3 Assign_Div">
+               <label for="formGroupExampleInput" class="Assignlabels">Completion Date</label>
+              <input name="date" type="date" required class="form-control inputsClass" id="formGroupExampleInput" placeholder=" Completion Date">
+             </div>
+            <center><button type="submit" class="btn btn-primary assignBtn" id='deleteBtn'>Assign</button></center>
+        </form>
+       </div>
    
-
-  <body>
-    <div class="heading">Assign Appointment</div>
-    <form action="/admin/assignAppointment" method="POST">
-
-    </form>
-  </body>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
-
+    </div>
+    
+</body>
+</div>
+ <!-- Option 1: Bootstrap Bundle with Popper -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+ <script>
+    var aler =document.getElementById('db-body')
+    function myAlert(){
+      console.log("Closed");
+      aler.className+=' alert-hid';
+    }
+    setTimeout(function(){
+      aler.className+=' alert-hid';
+    }, 3000)
+  </script>
 </html>
