@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/css/operationDelete.css" />
 </head>
 <%- include ("./components/navbar.ejs") %>
+<script> 
+let sd;
+let cd;
+</script>
 <body class="UR-body">
     <header>
         <h2>Update Your Profile</h2>
@@ -78,7 +82,7 @@
         </thead>
         <tbody style="color: white;">  
 
-          <% if(userData.length!=0) { var i=1; userData.forEach(function(data){ %>
+          <% if(userData.length!=0) { var i=1; var startDate="startDate"+i; var completeDate="completeDate"+i;userData.forEach(function(data){ %>
             <tr>
               <th scope="row" style="color: white;">
                 <%=i %>
@@ -89,22 +93,22 @@
               <td style="color: white;">
                 <%=data.price %>
               </td>
-              <td id="start_date"style="color: white;">
-              </td>
+              <td id=<%=startDate %> style="color: white;"></td>
+
               <script>
-                const sd = new Date("<%=data.start_date %>");
-                document.getElementById("start_date").innerHTML = sd.getDate()+ '/';
-                document.getElementById("start_date").innerHTML += sd.getMonth()+1+'/';
-                document.getElementById("start_date").innerHTML += sd.getFullYear();
+                sd = new Date("<%=data.start_date %>");
+                document.getElementById("<%=startDate %>").innerHTML = sd.getDate()+ '/';
+                document.getElementById("<%=startDate %>").innerHTML += sd.getMonth()+1+'/';
+                document.getElementById("<%=startDate %>").innerHTML += sd.getFullYear();
                 </script>
-              <td id="complete_date" style="color: white;">
-                <!-- <%=data.Complete_dt %> -->
-              </td>
+
+              <td id=<%=completeDate %> style="color: white;"></td>
+              
               <script>
-                const cd = new Date("<%=data.Complete_dt %>");
-                document.getElementById("complete_date").innerHTML = cd.getDate()+ '/';
-                document.getElementById("complete_date").innerHTML += cd.getMonth()+1+'/';
-                document.getElementById("complete_date").innerHTML += cd.getFullYear();
+                cd = new Date("<%=data.Complete_dt %>");
+                document.getElementById("<%=completeDate %>").innerHTML = cd.getDate()+ '/';
+                document.getElementById("<%=completeDate %>").innerHTML += cd.getMonth()+1+'/';
+                document.getElementById("<%=completeDate %>").innerHTML += cd.getFullYear();
                 </script>
 
               <td style="color: white;">
@@ -114,7 +118,7 @@
                 <%=data.Employee_name %>
               </td>
             </tr>
-            <% i++; }) %>
+            <% i++;startDate="startDate"+i; completeDate="completeDate"+i;}) %>
               <% } else{ %>
                 <tr>
                   <td colspan="7" style="color: white;">No Data Found</td>
