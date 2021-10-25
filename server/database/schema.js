@@ -9,10 +9,9 @@ con.connect(function(err) {
       });
   });
   
-var customer ="CREATE TABLE IF NOT EXISTS customer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255),email VARCHAR(255),password VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255), mobile INT(10))"
+var customer ="CREATE TABLE IF NOT EXISTS customer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255),email VARCHAR(255),password VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255), mobile LONG(10))"
 
 var job_card="CREATE TABLE IF NOT EXISTS job_card(card_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, customer_id INT NOT NULL,chasis_no INT NOT NULL ,price INT,date DATE NOT NULL,street VARCHAR(30) NOT NULL,Complete_dt DATE , city VARCHAR(30) NOT NULL, state VARCHAR(30) NOT NULL,job_id INT NOT NULL,license_no INT NOT NULL, Status BOOLEAN NOT NULL,Employee_id INT, FOREIGN KEY (customer_id) REFERENCES customer(id),FOREIGN KEY (job_id) REFERENCES job(job_id),FOREIGN KEY (chasis_no) REFERENCES vehicle(chasis_no),FOREIGN KEY (Employee_id) REFERENCES employee(id))"  
-
 
 var job="CREATE TABLE IF NOT EXISTS job(job_id INT PRIMARY KEY ,job_name VARCHAR(50) NOT NULL,price INT NOT NULL)"
 
