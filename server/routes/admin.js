@@ -424,9 +424,14 @@ router.post("/assign",protectLogin,(req,res,next)=>{
   var sql=`UPDATE job_card SET Employee_id=${emp},Complete_dt=?,Status=${1} WHERE card_id=${id}`;
 
   con.query(sql,[date],(err,results)=>{
-       if(err)throw err;
+       if(err){
+        console.log(err);
+        req.flash("error","Error occured");
+        res.redirect('/admin/dashboard') 
+       }
        else
        {
+         req.flash("success","Appointment assigned successfully")
          res.redirect("/admin/dashboard");
        }
   });

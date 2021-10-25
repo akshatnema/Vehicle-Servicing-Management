@@ -106,9 +106,15 @@ let cd;
               
               <script>
                 cd = new Date("<%=data.Complete_dt %>");
+                console.log(cd);
+                if(cd == 'Invalid Date'){
+                  document.getElementById("<%=completeDate %>").innerHTML = 'Not assigned'  
+                }
+                else{
                 document.getElementById("<%=completeDate %>").innerHTML = cd.getDate()+ '/';
                 document.getElementById("<%=completeDate %>").innerHTML += cd.getMonth()+1+'/';
                 document.getElementById("<%=completeDate %>").innerHTML += cd.getFullYear();
+                }
                 </script>
 
               <td style="color: white;">

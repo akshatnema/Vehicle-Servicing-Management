@@ -58,6 +58,7 @@ router.post("/login", (req, res) => {
       console.log("Wrong credentials");
       res.redirect("/");
     }
+    console.log(result);
     if (result.length === 0) {
       console.log("No credentials found");
       req.flash('error','No credentials found');
@@ -81,6 +82,10 @@ router.post("/login", (req, res) => {
           req.flash('success','logged in as customer');
           res.redirect("/customer/dashboard");
         });
+      }
+      else{
+        req.flash('error','Wrong credentials');
+        res.redirect('/');
       }
     }
   });
@@ -253,7 +258,7 @@ router.get("/take-appointment",protectLogin, (req, res) => {
 
       res.render("take-appointment", {
         data1: data1,
-        data2: data2,
+        data2: data2, error:req.flash("error"), success:req.flash("success")
       });
     });
   });
@@ -282,6 +287,7 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
       con.query(sql, [userID, vehicles, date, prices, address, city, state, jobs, license, 0, 1], function (err, data, fields) {
         if (err) {
           console.log(err);
+          req.flash('error','Appointment not successful, kindly fill all details');
           res.redirect("/customer/take-appointment")
         }
         else {
