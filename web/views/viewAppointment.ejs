@@ -18,6 +18,9 @@
 </head>
 
 <%- include ("./components/navbar1.ejs") %>
+<script>
+  let sd;
+</script>
 
   <body id="body">
     <div class="heading">Appointments</div>
@@ -27,9 +30,9 @@
         <thead>
           <tr>
             <th scope="col" style="width:10%;">#</th>
-            <th scope="col" style="width:10%;">Customer-id</th>
-            <th scope="col" style="width:15%;">Chasis_no</th>
-            <th scope="col" style="width:15%;">Assign_date</th>
+            <th scope="col" style="width:10%;">Customer ID</th>
+            <th scope="col" style="width:15%;">Chasis Number</th>
+            <th scope="col" style="width:15%;">Assign date</th>
             <th scope="col" style="width:15%;">Job</th>
             <th scope="col" style="width:10%;">Status</th>
             <th scope="col" style="width:25%;text-align: center;">Assignee</th>
@@ -38,7 +41,7 @@
         </thead>
         <tbody>
 
-          <% if(apps.length!=0) { var i=1; apps.forEach(function(data){ %>
+          <% if(apps.length!=0) { var i=1; var date="date"+1; apps.forEach(function(data){ %>
             <tr>
               <th scope="row" style="width:10%;">
                 <%= i %>
@@ -49,13 +52,13 @@
               <td style="width:15%;">
                 <%=data.chasis_no%>
               </td>
-              <td id="dates<%= i %>"style="width:15%;">
+              <td id="<%=date %>"style="width:15%;">
               </td>
               <script>
-                const sd = new Date("<%=data.date%>");
-                document.getElementById("dates<%= i%>").innerHTML = sd.getDate()+ '/';
-                document.getElementById("dates<%= i%>").innerHTML += sd.getMonth()+1+'/';
-                document.getElementById("dates<%= i%>").innerHTML += sd.getFullYear();
+                sd = new Date("<%=data.date%>");
+                document.getElementById("<%=date %>").innerHTML = sd.getDate()+ '/';
+                document.getElementById("<%=date %>").innerHTML += sd.getMonth()+1+'/';
+                document.getElementById("<%=date %>").innerHTML += sd.getFullYear();
                 </script>
               
               <td style="width:15%;">
@@ -68,7 +71,7 @@
                 <%= data.name %>
               </td>
             </tr>
-            <% i++; }) %>
+            <% i++;date="date"+i; }) %>
               <% } else{ %>
                 <tr>
                   <td colspan="7">No Data Found</td>
