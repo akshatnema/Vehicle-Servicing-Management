@@ -421,9 +421,9 @@ router.get("/assign",protectLogin,(req,res,next)=>{
 router.post("/assign",protectLogin,(req,res,next)=>{
   const {id,emp,date}=req.body;
 
-  var sql=`UPDATE job_card SET Employee_id=${emp},Complete_dt=${date},Status=${1} WHERE card_id=${id}`;
+  var sql=`UPDATE job_card SET Employee_id=${emp},Complete_dt=?,Status=${1} WHERE card_id=${id}`;
 
-  con.query(sql,(err,results)=>{
+  con.query(sql,[date],(err,results)=>{
        if(err)throw err;
        else
        {
