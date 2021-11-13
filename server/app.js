@@ -14,6 +14,7 @@ var jobs=require('./database/jobs');
 var employees = require('./database/employees')
 var mainroutes=require('./routes/main')
 var admin=require('./routes/admin')
+
 const sessionOptions = { secret: 'asecretkeyforsession', resave: false, saveUninitialized: false }
 app.use(flash())
 app.set('views', path.join(__dirname, '../web/views'));
@@ -23,40 +24,10 @@ app.set('view engine', 'ejs');
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(session(sessionOptions))
+
 app.use('/',mainroutes);
 app.use('/customer', customer);
 app.use('/admin',admin)
-
-
-
-
-// app.get('/',function(req, res){
-//   res.render('index');
-// })
-// app.get('/register',function(req, res){
-//   res.render('register');
-// })
-// app.get('/dashboard',function(req, res){
-//   res.render('dashboard');
-// })
-// app.get('/admin-login',function(req, res){
-//   res.render('admin-login');
-// })
-// app.get('/take-appointment',function(req, res){
-//   res.render('take-appointment');
-// })
-// app.get('/book-vehicle',function(req, res){
-//   res.render('registerVehicle');
-// })
-// app.get('/feedback',function(req, res){
-//   res.render('feedBack');
-// })
-// app.get('/add-employee',function(req, res){
-//   res.render('add-employee');
-// })
-// app.get('/adminDashboard',function(req, res){
-//   res.render('adminDashboard');
-// })
 
 
 app.listen(port,function(){

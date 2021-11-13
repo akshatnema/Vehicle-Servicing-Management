@@ -1,8 +1,17 @@
 const express = require("express");
 const session = require("express-session");
 const con = require("../database/sql_connect");
+var nodemailer = require('nodemailer');
 const bcrypt = require("bcrypt");
 var router = express.Router();
+
+var transporter = nodemailer.createTransport({
+  service: 'outlook',
+  auth: {
+    user: 'icarstech@outlook.com',
+    pass: 'pkf**ks**ks'
+  }
+});
 
 
 //functions
@@ -15,26 +24,8 @@ function protectLogin(req, res, next) {
     console.log("logged in as admin");
     res.redirect("/admin/dashboard");
   } else {
-    
     next();
   }
-}
-
-function already(email) {
-  const q0 = `SELECT * FROM customer WHERE email="${email}";`;
-  console.log("go in");
-  con.query(q0, (err, result) => {
-    if (err) {
-      throw err;
-    }
-    if (result.length === 0) {
-      console.log("not found");
-      return "not found";
-    } else {
-      console.log("found");
-      return "found";
-    }
-  });
 }
 
 
@@ -91,6 +82,8 @@ router.post("/login", (req, res) => {
   });
 });
 
+
+//Register of the customer
 router.get("/register",protectLogin, (req, res) => {
   if (!session.userID) {
     res.render("./register");
@@ -104,43 +97,48 @@ router.get("/register",protectLogin, (req, res) => {
 
 router.post("/register", async function (req, res) {
   const { name, email, mobile, address, city, state, password } = req.body;
-  if (already(email) == "found") {
-    console.log("This email is already registered");
-    req.flash('error', 'This email is already registered')
-    res.redirect("/");
-  } else {
-    const hash = await bcrypt.hash(password, 5);
+  const q0 = `SELECT * FROM customer WHERE email="${email}";`;
+  console.log("go in");
+  con.query(q0, async(err, result) => {
+    if(result.length){
+      console.log("This email is already registered");
+      req.flash('error', 'This email is already registered')
+      res.redirect("/");
+    }
+    else{
+      const hash = await bcrypt.hash(password, 5);
 
-    const query =
-      "INSERT INTO customer (name,email,street,city,state,password,mobile) VALUES (?,?,?,?,?,?,?)";
-    con.query(
-      query,
-      [name, email, address, city, state, hash, mobile],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-          console.log("Something went wrong");
-          req.flash('error', 'Something went wrong')
-          res.redirect("/register");
-        } else {
-          console.log("success");
+      const query =
+        "INSERT INTO customer (name,email,street,city,state,password,mobile) VALUES (?,?,?,?,?,?,?)";
+      con.query(
+        query,
+        [name, email, address, city, state, hash, mobile],
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            console.log("Something went wrong");
+            req.flash('error', 'Something went wrong')
+            res.redirect("/register");
+          } else {
+            console.log("success");
+          }
         }
-      }
-    );
-    req.flash('success','registered successfully');
-    res.redirect("/");
-    var sql = `SELECT id FROM customer WHERE email = '${email}'`;
-    con.query(sql, (err, data, fields) => {
-      if (err) {
-        console.log("Something went wrong");
-        res.redirect("register");
-      }
-      // console.log(data);
-      session.userID = data[0].id;
-      // console.log(data[0].id);
-      session.userType = "customer";
-    });
-  }
+      );
+      req.flash('success','registered successfully');
+      res.redirect("/");
+      var sql = `SELECT id FROM customer WHERE email = '${email}'`;
+      con.query(sql, (err, data, fields) => {
+        if (err) {
+          console.log("Something went wrong");
+          res.redirect("register");
+        }
+        // console.log(data);
+        session.userID = data[0].id;
+        // console.log(data[0].id);
+        session.userType = "customer";
+      });
+    }
+  })
 });
 
 router.post("/logout", (req, res) => {
@@ -292,6 +290,40 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
         }
         else {
           console.log("Appointment done.");
+          
+          var sql = `SELECT * FROM customer WHERE id=${session.userID}`
+          con.query(sql, function(err, result){
+            if(err) {
+              console.log(err);
+            }
+            else {
+              var mailOptions = {
+                from: 'icarstech@outlook.com',
+                to: result[0].email,
+                subject: 'Appointment Received',
+                text: `Hi ${result[0].name}, 
+                Thank you for taking appointment in iCars. Your appointment details are:
+                Vehicle chasis no - ${vehicles}
+                Appointment date - ${date}
+                Job - ${jobs}
+                license no - ${license}
+                Address - ${address} ${city} ${state}
+                Price - ${prices}
+                `
+               // html: '<h1>Hi Smartherd</h1><p>Your Messsage</p>'        
+              };
+
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+
+            }
+          })
+          
           req.flash("success", "Appointment done.")
           res.redirect("/customer/dashboard")
         }
@@ -299,6 +331,8 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
     }
   });
 });
+
+// Profile Section
 router.get('/updateProfile', function(req, res, next) {
   const id=session.userID;
   console.log(id);
