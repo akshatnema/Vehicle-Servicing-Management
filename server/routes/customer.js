@@ -415,4 +415,8 @@ router.post('/updateProfile',async function(req, res) {
   res.redirect('/customer/updateProfile')
 });
 
+
+router.get('/aboutUs',(req,res)=>{
+  res.render("aboutus");
+})
 module.exports=router;
