@@ -282,7 +282,7 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
 
       var sql = "INSERT INTO job_card(customer_id,chasis_no,date,price,street,city,state,job_id,license_no,status,Employee_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
-      con.query(sql, [userID, vehicles, date, prices, address, city, state, jobs, license, 0, 1], function (err, data, fields) {
+      con.query(sql, [userID, vehicles, date, prices, address, city, state, jobs, license, 0, 1], function (err, data1, fields) {
         if (err) {
           console.log(err);
           req.flash('error','Appointment not successful, kindly fill all details');
@@ -305,7 +305,7 @@ router.post("/take-appointment", protectLogin, async function (req, res) {
                 Thank you for taking appointment in iCars. Your appointment details are:
                 Vehicle chasis no - ${vehicles}
                 Appointment date - ${date}
-                Job - ${jobs}
+                Job - ${data[0].job_name}
                 license no - ${license}
                 Address - ${address} ${city} ${state}
                 Price - ${prices}
