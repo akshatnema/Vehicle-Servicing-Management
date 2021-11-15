@@ -235,6 +235,8 @@ router.get("/customerView", protectLogin, function (req, res, next) {
   });
 });
 
+// Customer Section
+
 router.get("/addUpdateCustomer", protectLogin, (req, res) => {
   res.render("addUpdateCustomer",{error:req.flash('error'),success:req.flash('success')});
 });
@@ -413,7 +415,7 @@ var sql=  `SELECT job_card.customer_id,job_card.chasis_no,job_card.date,job.job_
 
 })
 
-
+// Assigning the Appointments
 router.get("/assign",protectLogin,(req,res,next)=>{
     
       res.render("assignAppointment");
@@ -437,5 +439,8 @@ router.post("/assign",protectLogin,(req,res,next)=>{
   });
 })
 
+router.get('/aboutUs',(req,res)=>{
+  res.render("aboutus");
+})
 
 module.exports = router;
